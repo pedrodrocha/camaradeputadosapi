@@ -46,30 +46,21 @@ deputados_info <- function(id, ...) {
 
   content <- req$dados
 
-  zero_or_null <- is.zero_or_null(content)
-  for (i in seq_along(zero_or_null)) {
-    content[[zero_or_null[i]]] <- NA
-  }
+  content <- zero_or_null(content)
 
   ultimoStatus <- content$ultimoStatus
   content$ultimoStatus <- NULL
 
-  zero_or_null_ultimoStatus <- is.zero_or_null(ultimoStatus)
 
+  ultimoStatus <- zero_or_null(ultimoStatus)
 
-  for (i in seq_along(zero_or_null_ultimoStatus)) {
-    ultimoStatus[[zero_or_null_ultimoStatus[i]]] <- NA
-  }
 
   gabinete <- ultimoStatus$gabinete
   ultimoStatus$gabinete <- NULL
-  zero_or_null_gabinete <- is.zero_or_null(gabinete)
 
-  if (length(zero_or_null_gabinete) > 0) {
-    for (i in seq_along(zero_or_null_gabinete)) {
-      gabinete[[zero_or_null_gabinete[i]]] <- NA
-    }
-  }
+  gabinete <- zero_or_null(gabinete)
+
+
 
   content <- tibble::as_tibble(content)
   gabinete <- tibble::as_tibble(gabinete) %>%
@@ -81,8 +72,6 @@ deputados_info <- function(id, ...) {
       "gabineteTelefone" = telefone
     )
   ultimoStatus <- tibble::as_tibble(ultimoStatus)
-
-
 
 
   content %>%
