@@ -7,14 +7,22 @@
 deputados_id(name)
 }
 \arguments{
-\item{name}{}
+\item{name}{The name of the representative you want to extract the id}
 }
 \value{
-
+The id of the representative
 }
 \description{
 Extract a representative Id
 }
 \examples{
-afonso_arinos <- deputados_id(name = "Afonso Arinos")
+a <- deputados_id(name = "Afonso Arinos")
 }
+\seealso{
+Other deputados: 
+\code{\link{deputados_despesas}()},
+\code{\link{deputados_discursos}()},
+\code{\link{deputados_info}()},
+\code{\link{deputados}()}
+}
+\concept{deputados}

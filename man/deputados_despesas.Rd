@@ -2,18 +2,31 @@
 % Please edit documentation in R/deputados.R
 \name{deputados_despesas}
 \alias{deputados_despesas}
-\title{GET representative expenditures while in office for a given year}
+\title{Get representative expenditures while in office for a given year}
 \usage{
 deputados_despesas(id, year, ...)
 }
 \arguments{
-\item{year}{}
+\item{id}{representative id}
+
+\item{year}{a year for checking the expenditures of a given representative}
 
 \item{...}{query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
 }
 \value{
-
+a tibble of a representative expenditures while in office for a given year
 }
 \description{
-GET representative expenditures while in office for a given year
+Get representative expenditures while in office for a given year
 }
+\examples{
+a <- deputados_despesas(id = deputados_id(name = "Eduardo Cunha"), 2013)
+}
+\seealso{
+Other deputados: 
+\code{\link{deputados_discursos}()},
+\code{\link{deputados_id}()},
+\code{\link{deputados_info}()},
+\code{\link{deputados}()}
+}
+\concept{deputados}

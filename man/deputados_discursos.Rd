@@ -2,18 +2,31 @@
 % Please edit documentation in R/deputados.R
 \name{deputados_discursos}
 \alias{deputados_discursos}
-\title{GET representative speeches}
+\title{Get representative speeches}
 \usage{
 deputados_discursos(id, from, ...)
 }
 \arguments{
-\item{from}{}
+\item{id}{representative id}
+
+\item{from}{the beggining date (YYYY-MM-DD) you want to collect speeches}
 
 \item{...}{query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
 }
 \value{
-
+a tibble with speeches from the representative
 }
 \description{
-GET representative speeches
+Get representative speeches
 }
+\examples{
+a <- deputados_discursos(id = deputados_id("Rodrigo Maia"), "2020-01-01")
+}
+\seealso{
+Other deputados: 
+\code{\link{deputados_despesas}()},
+\code{\link{deputados_id}()},
+\code{\link{deputados_info}()},
+\code{\link{deputados}()}
+}
+\concept{deputados}

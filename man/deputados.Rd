@@ -10,7 +10,7 @@ deputados(...)
 \item{...}{query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
 }
 \value{
-
+A tibble with a list of representatives
 }
 \description{
 Get a list of representatives (current and historical)
@@ -20,3 +20,11 @@ a <- deputados()
 b <- deputados(siglaUF = "MG")
 c <- deputados(siglaUF = "MG", siglaPartido = "PT")
 }
+\seealso{
+Other deputados: 
+\code{\link{deputados_despesas}()},
+\code{\link{deputados_discursos}()},
+\code{\link{deputados_id}()},
+\code{\link{deputados_info}()}
+}
+\concept{deputados}

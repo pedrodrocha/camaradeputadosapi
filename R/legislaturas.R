@@ -1,10 +1,10 @@
 #' GET a list of legislative periods
 #'
-#' @param ...
+#' @param ... query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
 #'
 #' @return
 #' @export
-#'
+#' @family legislaturas
 #' @examples
 legislaturas <- function(...) {
 

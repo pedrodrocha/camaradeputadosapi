@@ -7,7 +7,7 @@
 legislaturas(...)
 }
 \arguments{
-\item{...}{}
+\item{...}{query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
 }
 \value{
 
@@ -15,3 +15,4 @@ legislaturas(...)
 \description{
 GET a list of legislative periods
 }
+\concept{legislaturas}

@@ -1,11 +1,10 @@
-
-#' Get a list of representatives (current and historical)
+#' @title Get a list of representatives (current and historical)
 #'
 #' @param ... query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
 #'
-#' @return
+#' @return A tibble with a list of representatives
 #' @export
-#'
+#' @family deputados
 #' @examples
 #' a <- deputados()
 #' b <- deputados(siglaUF = "MG")
@@ -23,15 +22,15 @@ deputados <- function(...) {
 }
 
 
-#' Extract a representative Id
+#' @title Extract a representative Id
 #'
-#' @param name
+#' @param name The name of the representative you want to extract the id
 #'
-#' @return
+#' @return The id of the representative
 #' @export
-#'
+#' @family deputados
 #' @examples
-#' afonso_arinos <- deputados_id(name = "Afonso Arinos")
+#' a <- deputados_id(name = "Afonso Arinos")
 
 deputados_id <- function(name) {
 
@@ -54,15 +53,16 @@ deputados_id <- function(name) {
 }
 
 
-#' GET general information of a representative
+#' @title Get general information for a representative
 #'
 #' @param id representative id
 #' @param ... query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
 #'
-#' @return
+#' @return a tibble with general information for a representative
 #' @export
-#'
-#' @examples info_geral <- deputados_info(id = 204554)
+#' @family deputados
+#' @examples
+#' a <- deputados_info(id = 204554)
 deputados_info <- function(id, ...) {
 
   if (is.numeric(id)) {
@@ -113,16 +113,17 @@ deputados_info <- function(id, ...) {
 
 }
 
-#' GET representative expenditures while in office for a given year
+#' @title Get representative expenditures while in office for a given year
 #'
-#' @param id
+#' @param id representative id
 #' @param ... query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
-#' @param year
+#' @param year a year for checking the expenditures of a given representative
 #'
-#' @return
+#' @return a tibble of a representative expenditures while in office for a given year
 #' @export
-#'
+#' @family deputados
 #' @examples
+#' a <- deputados_despesas(id = deputados_id(name = "Eduardo Cunha"), 2013)
 deputados_despesas <- function(id, year, ...) {
 
   assertthat::has_args(deputados_despesas,args = year)
@@ -164,16 +165,17 @@ deputados_despesas <- function(id, year, ...) {
 }
 
 
-#' GET representative speeches
+#' @title Get representative speeches
 #'
-#' @param id
+#' @param id representative id
 #' @param ... query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
-#' @param from
+#' @param from the beggining date (YYYY-MM-DD) you want to collect speeches
 #'
-#' @return
+#' @return a tibble with speeches from the representative
 #' @export
-#'
+#' @family deputados
 #' @examples
+#' a <- deputados_discursos(id = deputados_id("Rodrigo Maia"), "2020-01-01")
 deputados_discursos <- function(id, from, ...) {
 
   assertthat::has_args(deputados_discursos,args = from)
@@ -216,16 +218,16 @@ deputados_discursos <- function(id, from, ...) {
 }
 
 
-#' GET a list of events the representative was present
+#' @title Get a list of events the representative was present
+#' @param id representative id
+#' @param from the beggining date (YYYY-MM-DD) you want to collect events
+#' @param ... query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
 #'
-#' @param id
-#' @param from
-#' @param ...
-#'
-#' @return
+#' @return a tibble with events the representative was present
 #' @export
-#'
+#' @family deputados
 #' @examples
+#' a <- deputados_eventos(id = deputados_id("Aécio Neves"), "2020-12-01")
 deputados_eventos <- function(id, from, ...) {
   assertthat::has_args(deputados_eventos, args = from)
 
@@ -274,15 +276,15 @@ deputados_eventos <- function(id, from, ...) {
 }
 
 
-#' GET a list of parliamentary  fronts a representative is currently member
-#'
-#' @param id
+#' @title Get a list of parliamentary  fronts a representative is currently member
+#' @param id representative id
 #' @param ... query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
 #'
-#' @return
+#' @return a tibble of parliamentary  fronts a representative is currently member
 #' @export
-#'
+#' @family deputados
 #' @examples
+#' a <- deputados_frentes(id = deputados_id("Marcelo Freixo"))
 deputados_frentes <- function(id,...) {
   if (is.numeric(id)) {
     id <- as.character(id)
@@ -311,15 +313,15 @@ deputados_frentes <- function(id,...) {
 }
 
 
-#' GET a list of bodies and commissions a representative is member
-#'
-#' @param id
+#' @title Get a list of bodies and commissions a representative is member
+#' @param id the representative id
 #' @param ... query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
 #'
-#' @return
+#' @return a tibble with bodies and commissions a representative is member
 #' @export
-#'
+#' @family deputados
 #' @examples
+#' a <- deputados_orgaos(deputados_id("Alessandro Molon"))
 deputados_orgaos <- function(id,...){
 
   if (is.numeric(id)) {

@@ -2,7 +2,7 @@
 % Please edit documentation in R/deputados.R
 \name{deputados_info}
 \alias{deputados_info}
-\title{GET general information of a representative}
+\title{Get general information for a representative}
 \usage{
 deputados_info(id, ...)
 }
@@ -12,11 +12,19 @@ deputados_info(id, ...)
 \item{...}{query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
 }
 \value{
-
+a tibble with general information for a representative
 }
 \description{
-GET general information of a representative
+Get general information for a representative
 }
 \examples{
-info_geral <- deputados_info(id = 204554)
+a <- deputados_info(id = 204554)
 }
+\seealso{
+Other deputados: 
+\code{\link{deputados_despesas}()},
+\code{\link{deputados_discursos}()},
+\code{\link{deputados_id}()},
+\code{\link{deputados}()}
+}
+\concept{deputados}
