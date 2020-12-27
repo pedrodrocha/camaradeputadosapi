@@ -9,7 +9,7 @@ deputados_discursos(id, from, ...)
 \arguments{
 \item{id}{representative id}
 
-\item{from}{the beggining date (YYYY-MM-DD) you want to collect speeches}
+\item{from}{the beginning date (YYYY-MM-DD) you want to collect speeches}
 
 \item{...}{query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
 }
@@ -25,8 +25,11 @@ a <- deputados_discursos(id = deputados_id("Rodrigo Maia"), "2020-01-01")
 \seealso{
 Other deputados: 
 \code{\link{deputados_despesas}()},
+\code{\link{deputados_eventos}()},
+\code{\link{deputados_frentes}()},
 \code{\link{deputados_id}()},
 \code{\link{deputados_info}()},
+\code{\link{deputados_orgaos}()},
 \code{\link{deputados}()}
 }
 \concept{deputados}

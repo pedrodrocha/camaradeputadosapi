@@ -31,7 +31,7 @@ legislaturas <- function(...) {
 
 #' @title Extract a legislative period id
 #'
-#' @param date the year for checking an active legislative period id
+#' @param date a date (YYYY-MM-DD) for checking an active legislative period id
 #'
 #' @return A legislative period id
 #' @export
@@ -40,18 +40,7 @@ legislaturas <- function(...) {
 #' legislaturas_id(date = "2020-01-01")
 legislaturas_id <- function(date) {
 
-  date <- suppressWarnings(lubridate::ymd(date))
-
-  tryCatch(
-    assertthat::assert_that(!is.na(date)),
-    error = function(e) {
-      stop("Wrong date format for 'date'. Try 'YYYY-MM-DD'")
-    }
-  )
-
-  if(!is.character(date)){
-    date <- as.character(date)
-  }
+  date <- check_date(date)
 
   id <- tryCatch(
     legislaturas(data = date)$id,

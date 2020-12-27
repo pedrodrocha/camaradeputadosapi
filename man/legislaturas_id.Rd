@@ -7,7 +7,7 @@
 legislaturas_id(date)
 }
 \arguments{
-\item{date}{the year for checking an active legislative period id}
+\item{date}{a date (YYYY-MM-DD) for checking an active legislative period id}
 }
 \value{
 A legislative period id

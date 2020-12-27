@@ -177,7 +177,7 @@ deputados_despesas <- function(id, year, ...) {
 #'
 #' @param id representative id
 #' @param ... query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
-#' @param from the beggining date (YYYY-MM-DD) you want to collect speeches
+#' @param from the beginning date (YYYY-MM-DD) you want to collect speeches
 #'
 #' @return a tibble with speeches from the representative
 #' @export
@@ -188,18 +188,7 @@ deputados_discursos <- function(id, from, ...) {
 
   assertthat::has_args(deputados_discursos,args = from)
 
-  from <- suppressWarnings(lubridate::ymd(from))
-
-  tryCatch(
-    assertthat::assert_that(!is.na(from)),
-    error = function(e) {
-      stop("Wrong date format for 'from'. Try 'YYYY-MM-DD'")
-    }
-  )
-
-  if(!is.character(from)){
-    from <- as.character(from)
-  }
+  from <- check_date(from)
 
   if (is.numeric(id)) {
     id <- as.character(id)
@@ -226,31 +215,24 @@ deputados_discursos <- function(id, from, ...) {
 }
 
 
-#' @title Get a list of events the representative was present
-#' @param id representative id
-#' @param from the beggining date (YYYY-MM-DD) you want to collect events
+
+#' Get a list of events the representative was present
+#'
+#' @param id A representative id
+#' @param from the beginning date (YYYY-MM-DD) you want to collect events
+#' @param to the end date (YYYY-MM-DD) you want to collect events
 #' @param ... query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
 #'
-#' @return a tibble with events the representative was present
+#' @return A tibble with events the representative was present
 #' @export
 #' @family deputados
-#' @examples
-#' a <- deputados_eventos(id = deputados_id("Aécio Neves"), "2020-12-01")
-deputados_eventos <- function(id, from, ...) {
-  assertthat::has_args(deputados_eventos, args = from)
+#' @examples deputados_eventos(id = 74646, from = "2020-11-01", to = "2020-12-01")
 
-  from <- suppressWarnings(lubridate::ymd(from))
+deputados_eventos <- function(id, from, to, ...) {
+  assertthat::has_args(deputados_eventos, args = c(from,to))
 
-  tryCatch(
-    assertthat::assert_that(!is.na(from)),
-    error = function(e) {
-      stop("Wrong date format for 'from'. Try 'YYYY-MM-DD'")
-    }
-  )
-
-  if(!is.character(from)){
-    from <- as.character(from)
-  }
+  from <- check_date(from)
+  to <- check_date(to)
 
   if (is.numeric(id)) {
     id <- as.character(id)
@@ -258,6 +240,7 @@ deputados_eventos <- function(id, from, ...) {
 
   query_list <- list(
     dataInicio = from,
+    dataFim = to,
     ...
   )
 
@@ -282,6 +265,8 @@ deputados_eventos <- function(id, from, ...) {
 
 
 }
+
+
 
 
 #' @title Get a list of parliamentary  fronts a representative is currently member

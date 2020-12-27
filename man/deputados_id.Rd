@@ -22,7 +22,10 @@ a <- deputados_id(name = "Afonso Arinos")
 Other deputados: 
 \code{\link{deputados_despesas}()},
 \code{\link{deputados_discursos}()},
+\code{\link{deputados_eventos}()},
+\code{\link{deputados_frentes}()},
 \code{\link{deputados_info}()},
+\code{\link{deputados_orgaos}()},
 \code{\link{deputados}()}
 }
 \concept{deputados}

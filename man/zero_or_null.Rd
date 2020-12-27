@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{zero_or_null}
 \alias{zero_or_null}
-\title{Title}
+\title{Check a list for zero or null entries}
 \usage{
 zero_or_null(list)
 }
@@ -10,5 +10,5 @@ zero_or_null(list)
 \item{list}{receives a list}
 }
 \description{
-Title
+Check a list for zero or null entries
 }

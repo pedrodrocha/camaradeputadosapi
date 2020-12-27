@@ -25,8 +25,11 @@ a <- deputados_despesas(id = deputados_id(name = "Eduardo Cunha"), 2013)
 \seealso{
 Other deputados: 
 \code{\link{deputados_discursos}()},
+\code{\link{deputados_eventos}()},
+\code{\link{deputados_frentes}()},
 \code{\link{deputados_id}()},
 \code{\link{deputados_info}()},
+\code{\link{deputados_orgaos}()},
 \code{\link{deputados}()}
 }
 \concept{deputados}
