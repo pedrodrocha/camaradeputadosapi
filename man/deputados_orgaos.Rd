@@ -7,7 +7,7 @@
 deputados_orgaos(id, ...)
 }
 \arguments{
-\item{...}{}
+\item{...}{query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
 }
 \value{
 

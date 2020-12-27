@@ -31,7 +31,7 @@ deputados <- function(...) {
 #' @export
 #'
 #' @examples
-#' afonso_arinos <- deputados_getId(name = "Afonso Arinos")
+#' afonso_arinos <- deputados_id(name = "Afonso Arinos")
 
 deputados_id <- function(name) {
 
@@ -62,7 +62,7 @@ deputados_id <- function(name) {
 #' @return
 #' @export
 #'
-#' @examples info_geral <- deputados_infoGeral(id = 204554)
+#' @examples info_geral <- deputados_info(id = 204554)
 deputados_info <- function(id, ...) {
 
   if (is.numeric(id)) {
@@ -116,7 +116,7 @@ deputados_info <- function(id, ...) {
 #' GET representative expenditures while in office for a given year
 #'
 #' @param id
-#' @param ...
+#' @param ... query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
 #' @param year
 #'
 #' @return
@@ -167,7 +167,7 @@ deputados_despesas <- function(id, year, ...) {
 #' GET representative speeches
 #'
 #' @param id
-#' @param ...
+#' @param ... query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
 #' @param from
 #'
 #' @return
@@ -277,7 +277,7 @@ deputados_eventos <- function(id, from, ...) {
 #' GET a list of parliamentary  fronts a representative is currently member
 #'
 #' @param id
-#' @param ...
+#' @param ... query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
 #'
 #' @return
 #' @export
@@ -314,7 +314,7 @@ deputados_frentes <- function(id,...) {
 #' GET a list of bodies and commissions a representative is member
 #'
 #' @param id
-#' @param ...
+#' @param ... query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
 #'
 #' @return
 #' @export

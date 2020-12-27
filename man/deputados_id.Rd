@@ -16,5 +16,5 @@ deputados_id(name)
 Extract a representative Id
 }
 \examples{
-afonso_arinos <- deputados_getId(name = "Afonso Arinos")
+afonso_arinos <- deputados_id(name = "Afonso Arinos")
 }

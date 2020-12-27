@@ -18,5 +18,5 @@ deputados_info(id, ...)
 GET general information of a representative
 }
 \examples{
-info_geral <- deputados_infoGeral(id = 204554)
+info_geral <- deputados_info(id = 204554)
 }

@@ -8,6 +8,8 @@ deputados_discursos(id, from, ...)
 }
 \arguments{
 \item{from}{}
+
+\item{...}{query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
 }
 \value{
 

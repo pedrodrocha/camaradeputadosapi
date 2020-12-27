@@ -8,6 +8,8 @@ deputados_despesas(id, year, ...)
 }
 \arguments{
 \item{year}{}
+
+\item{...}{query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
 }
 \value{
 
