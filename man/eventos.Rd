@@ -2,21 +2,29 @@
 % Please edit documentation in R/eventos.R
 \name{eventos}
 \alias{eventos}
-\title{Get a list of events that ocurred or are on schedule at the House of Representatives}
+\title{Get a list of events that occurred or are on schedule at the House of Representatives}
 \usage{
 eventos(...)
 }
 \arguments{
-\item{...}{query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
+\item{...}{query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
 }
 \value{
-A tibble  of events that ocurred or are on schedule at the House of Representatives
+A tibble  of events that occurred or are on schedule at the House of Representatives
 }
 \description{
-Get a list of events that ocurred or are on schedule at the House of Representatives
+Get a list of events that occurred or are on schedule at the House of Representatives
 }
 \examples{
 a <- eventos()
 b <- eventos(dataInicio = "2020-01-01")
+}
+\seealso{
+Other eventos: 
+\code{\link{eventos_deputados}()},
+\code{\link{eventos_info}()},
+\code{\link{eventos_orgaos}()},
+\code{\link{eventos_pauta}()},
+\code{\link{eventos_votacoes}()}
 }
 \concept{eventos}

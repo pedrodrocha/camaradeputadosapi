@@ -9,7 +9,7 @@ deputados_info(id, ...)
 \arguments{
 \item{id}{representative id}
 
-\item{...}{query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
+\item{...}{query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
 }
 \value{
 a tibble with general information for a representative

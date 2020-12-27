@@ -9,7 +9,7 @@ legislaturas_mesa(id, ...)
 \arguments{
 \item{id}{legislative period id}
 
-\item{...}{query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
+\item{...}{query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
 }
 \value{
 A tibble with speakers for the House of Representative for a given legislative period

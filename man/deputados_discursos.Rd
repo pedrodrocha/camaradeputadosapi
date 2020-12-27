@@ -11,7 +11,7 @@ deputados_discursos(id, from, ...)
 
 \item{from}{the beggining date (YYYY-MM-DD) you want to collect speeches}
 
-\item{...}{query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
+\item{...}{query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
 }
 \value{
 a tibble with speeches from the representative

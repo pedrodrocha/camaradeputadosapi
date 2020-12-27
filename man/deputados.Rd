@@ -7,7 +7,7 @@
 deputados(...)
 }
 \arguments{
-\item{...}{query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
+\item{...}{query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
 }
 \value{
 A tibble with a list of representatives

@@ -11,7 +11,7 @@ deputados_despesas(id, year, ...)
 
 \item{year}{a year for checking the expenditures of a given representative}
 
-\item{...}{query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
+\item{...}{query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
 }
 \value{
 a tibble of a representative expenditures while in office for a given year

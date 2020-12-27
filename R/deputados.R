@@ -1,6 +1,6 @@
 #' @title Get a list of representatives (current and historical)
 #'
-#' @param ... query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
+#' @param ... query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
 #'
 #' @return A tibble with a list of representatives
 #' @export
@@ -15,8 +15,17 @@ deputados <- function(...) {
 
   req <- deputados_api("deputados",query_list)
 
-  tibble::as_tibble(req$dados) %>%
-    dplyr::select(-c(uri,uriPartido))
+  if (length(req$dados) == 0) {
+    warning("There is no data for this entry.", call. = FALSE)
+  }
+
+  if ("uri" %in% names(req$dados)) {
+    tibble::as_tibble(req$dados) %>%
+      dplyr::select(-c(uri,uriPartido))
+
+  } else {
+    tibble::as_tibble(req$dados)
+  }
 
 
 }
@@ -55,7 +64,7 @@ deputados_id <- function(name) {
 #' @title Get general information for a representative
 #'
 #' @param id representative id
-#' @param ... query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
+#' @param ... query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
 #'
 #' @return a tibble with general information for a representative
 #' @export
@@ -115,7 +124,7 @@ deputados_info <- function(id, ...) {
 #' @title Get representative expenditures while in office for a given year
 #'
 #' @param id representative id
-#' @param ... query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
+#' @param ... query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
 #' @param year a year for checking the expenditures of a given representative
 #'
 #' @return a tibble of a representative expenditures while in office for a given year
@@ -167,7 +176,7 @@ deputados_despesas <- function(id, year, ...) {
 #' @title Get representative speeches
 #'
 #' @param id representative id
-#' @param ... query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
+#' @param ... query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
 #' @param from the beggining date (YYYY-MM-DD) you want to collect speeches
 #'
 #' @return a tibble with speeches from the representative
@@ -220,7 +229,7 @@ deputados_discursos <- function(id, from, ...) {
 #' @title Get a list of events the representative was present
 #' @param id representative id
 #' @param from the beggining date (YYYY-MM-DD) you want to collect events
-#' @param ... query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
+#' @param ... query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
 #'
 #' @return a tibble with events the representative was present
 #' @export
@@ -277,7 +286,7 @@ deputados_eventos <- function(id, from, ...) {
 
 #' @title Get a list of parliamentary  fronts a representative is currently member
 #' @param id representative id
-#' @param ... query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
+#' @param ... query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
 #'
 #' @return a tibble of parliamentary  fronts a representative is currently member
 #' @export
@@ -314,7 +323,7 @@ deputados_frentes <- function(id,...) {
 
 #' @title Get a list of bodies and commissions a representative is member
 #' @param id the representative id
-#' @param ... query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
+#' @param ... query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
 #'
 #' @return a tibble with bodies and commissions a representative is member
 #' @export

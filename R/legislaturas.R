@@ -1,6 +1,6 @@
 #' @title GET a list of legislative periods
 #'
-#' @param ... query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
+#' @param ... query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
 #'
 #' @return A tibble with a list of legislative periods
 #' @export
@@ -15,12 +15,21 @@ legislaturas <- function(...) {
 
   content <- req$dados
 
-  tibble::as_tibble(content) %>%
-    dplyr::select(-uri)
+  if (length(content) == 0) {
+    warning("There is no data for this entry.", call. = FALSE)
+  }
+
+  if ("uri" %in% names(content)) {
+    tibble::as_tibble(content) %>%
+      dplyr::select(-uri)
+
+  } else {
+    tibble::as_tibble(content)
+  }
 
 }
 
-#' @title Get legislative period id
+#' @title Extract a legislative period id
 #'
 #' @param date the year for checking an active legislative period id
 #'
@@ -86,7 +95,7 @@ legislaturas_info <- function(id) {
 #' @title Get information of speakers for the House of Representative for a given legislative period
 #'
 #' @param id legislative period id
-#' @param ... query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
+#' @param ... query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
 #'
 #' @return A tibble with speakers for the House of Representative for a given legislative period
 #' @export
@@ -106,6 +115,7 @@ legislaturas_mesa <- function(id,...) {
   req <- deputados_api(path, query_list)
 
   content <- req$dados
+
 
   if (length(content) == 0) {
 

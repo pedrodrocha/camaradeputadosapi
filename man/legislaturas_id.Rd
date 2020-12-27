@@ -2,7 +2,7 @@
 % Please edit documentation in R/legislaturas.R
 \name{legislaturas_id}
 \alias{legislaturas_id}
-\title{Get legislative period id}
+\title{Extract a legislative period id}
 \usage{
 legislaturas_id(date)
 }
@@ -13,7 +13,7 @@ legislaturas_id(date)
 A legislative period id
 }
 \description{
-Get legislative period id
+Extract a legislative period id
 }
 \examples{
 legislaturas_id(date = "2020-01-01")
