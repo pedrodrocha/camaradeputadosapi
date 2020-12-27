@@ -13,5 +13,7 @@ Imports:
     magrittr,
     assertthat,
     rlist,
-    dplyr
+    dplyr,
+    purrr,
+    lubridate
 RoxygenNote: 7.1.1

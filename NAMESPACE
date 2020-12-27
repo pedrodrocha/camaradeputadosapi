@@ -2,5 +2,12 @@
 
 export("%>%")
 export(deputados)
+export(deputados_despesas)
+export(deputados_discursos)
+export(deputados_eventos)
+export(deputados_frentes)
+export(deputados_id)
 export(deputados_info)
+export(deputados_orgaos)
+export(legislaturas)
 importFrom(magrittr,"%>%")

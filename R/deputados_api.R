@@ -25,7 +25,6 @@ deputados_api <- function(path, args = NULL) {
     stop(httr::http_status(resp)$message)
   }
 
-  message(httr::http_status(resp)$message)
 
   if (httr::http_type(resp) != "application/json") {
     stop("API did not return json")

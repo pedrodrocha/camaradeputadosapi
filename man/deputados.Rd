@@ -2,7 +2,7 @@
 % Please edit documentation in R/deputados.R
 \name{deputados}
 \alias{deputados}
-\title{Title}
+\title{Get a list of representatives (current and historical)}
 \usage{
 deputados(...)
 }
@@ -13,7 +13,7 @@ deputados(...)
 
 }
 \description{
-Title
+Get a list of representatives (current and historical)
 }
 \examples{
 a <- deputados()

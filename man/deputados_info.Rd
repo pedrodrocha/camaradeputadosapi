@@ -2,7 +2,7 @@
 % Please edit documentation in R/deputados.R
 \name{deputados_info}
 \alias{deputados_info}
-\title{Title}
+\title{GET general information of a representative}
 \usage{
 deputados_info(id, ...)
 }
@@ -15,7 +15,7 @@ deputados_info(id, ...)
 
 }
 \description{
-Title
+GET general information of a representative
 }
 \examples{
 info_geral <- deputados_infoGeral(id = 204554)
