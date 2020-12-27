@@ -10,9 +10,18 @@ legislaturas(...)
 \item{...}{query parameters for the House of Representatatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
 }
 \value{
-
+A tibble with a list of legislative periods
 }
 \description{
 GET a list of legislative periods
+}
+\examples{
+a <- legislaturas()
+}
+\seealso{
+Other legislaturas: 
+\code{\link{legislaturas_id}()},
+\code{\link{legislaturas_info}()},
+\code{\link{legislaturas_mesa}()}
 }
 \concept{legislaturas}

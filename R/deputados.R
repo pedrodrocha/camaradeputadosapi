@@ -31,7 +31,6 @@ deputados <- function(...) {
 #' @family deputados
 #' @examples
 #' a <- deputados_id(name = "Afonso Arinos")
-
 deputados_id <- function(name) {
 
   id <- tryCatch(
