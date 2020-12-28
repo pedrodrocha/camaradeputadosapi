@@ -10,7 +10,7 @@
 #' b <- orgaos(dataInicio = "2020-01-01", dataFim = "2020-12-31")
 orgaos <- function(...) {
   query_list <- list(...)
-
+ s
   req <- main_api("orgaos",query_list)
 
   content <- req$dados
