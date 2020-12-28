@@ -12,8 +12,8 @@ The goal of `camaradeputadosapi` is to ease access and provide a clean
 interface in R for querying the Brazilian House of Representatives open
 data [RESTful API](https://dadosabertos.camara.leg.br/swagger/api.html).
 
-The package is under active development, but major functionalities are
-already on. Note that in this state of the project there isn’t proper
+The package is not completed yet, but major functionalities are already
+on. Note that in this state of the project there isn’t proper
 documentation and breaking changes are expected to occur. In any case,
 user feedback is welcome and valued.
 
@@ -47,8 +47,8 @@ functions for querying each type of data provided by the API:
     processes.
   - `orgaos()` & `orgaos_*()`: For querying data on commissions and
     other legislative bodies.  
-  - `referencias_*()`: For querying metadata for available variables and
-    its values (**NOT AVAILABLE YET**).
+  - `referencias_*()`: For querying metadata for data in
+    ‘deputados’,‘eventos’, ‘orgaos’ and ‘proposicoes’.
 
 **OBS:** In general the API returns by default only 15 results per
 request and the max limit is 100 results, but for querying voting data

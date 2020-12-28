@@ -9,6 +9,9 @@ zero_or_null(list)
 \arguments{
 \item{list}{receives a list}
 }
+\value{
+a list that has been cleared of length 0 and NULL values
+}
 \description{
 Check a list for zero or null entries
 }

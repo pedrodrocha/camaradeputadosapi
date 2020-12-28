@@ -10,7 +10,7 @@ check_date(date)
 \item{date}{a date entry for check}
 }
 \value{
-a date
+a date that has been checked
 }
 \description{
 Check date
