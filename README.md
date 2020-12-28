@@ -31,8 +31,8 @@ devtools::install_github("pedrodrocha/camaradeputadosapi")
 In its final stage the package is expected to cover nine families of
 functions for querying each one a type of data provided by the API:
 
-  - `deputados()` & `deputados_*()`: For querying data on a
-    representative that is or once were in office.  
+  - `deputados()` & `deputados_*()`: For querying data on
+    representatives that are or once were in office.  
   - `eventos()` & `eventos_*()`: For querying data on events that
     occurred or are scheduled.  
   - `frentes()` & `frentes_*()`: For querying data on parliamentary
@@ -43,12 +43,12 @@ functions for querying each one a type of data provided by the API:
     parties.  
   - `proposicoes()` & `proposicoes_*()`: For querying data on
     propositions.  
-  - `votacoes()` & `votacoes_*()`: For querying data on voting voting
-    processes (**UNDER DEVELOPMENT**).
+  - `votacoes()` & `votacoes_*()`: For querying data on voting processes
+    (**NOT AVAILABLE YET**).
   - `orgaos()` & `orgaos_*()`: For querying data on commissions and
-    other legislative bodies (**UNDER DEVELOPMENT**).  
+    other legislative bodies (**NOT AVAILABLE YET**).  
   - `referencias_*()`: For querying data on available variables and its
-    values (**UNDER DEVELOPMENT**).
+    values (**NOT AVAILABLE YET**).
 
 **OBS:** By default the API returns only 15 results per request and the
 limit is 100 results. When appropriate make sure to add `itens= N` as a
