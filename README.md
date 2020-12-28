@@ -29,7 +29,7 @@ devtools::install_github("pedrodrocha/camaradeputadosapi")
 ## Usage
 
 In its final stage the package is expected to cover eight families of
-functions for querying each one a type of data provided by the API:
+functions for querying each type of data provided by the API:
 
   - `deputados()` & `deputados_*()`: For querying data on
     representatives that are or once were in office.  
