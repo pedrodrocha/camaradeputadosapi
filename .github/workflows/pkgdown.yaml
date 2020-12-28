@@ -6,6 +6,11 @@ on:
 
 name: pkgdown
 
+navbar:
+  structure:
+    left:  [home, intro, reference, articles, tutorials, news]
+    right: [github]
+
 jobs:
   pkgdown:
     runs-on: macOS-latest
