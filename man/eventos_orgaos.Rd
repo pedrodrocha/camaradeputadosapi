@@ -23,6 +23,7 @@ Other eventos:
 \code{\link{eventos_deputados}()},
 \code{\link{eventos_info}()},
 \code{\link{eventos_pauta}()},
+\code{\link{eventos_referencias}()},
 \code{\link{eventos_votacoes}()},
 \code{\link{eventos}()}
 }

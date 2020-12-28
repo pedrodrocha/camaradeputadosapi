@@ -227,3 +227,35 @@ eventos_votacoes <- function(id) {
     tibble::as_tibble(content)
   }
 }
+
+
+#' @title Get metadata information on data related to 'eventos'
+#'
+#' @param meta tables of metadata for querying
+#'
+#' @return A list of tibbles with metadata information on data related to the family 'eventos'
+#' @export
+#' @family eventos
+#' @examples
+#' a <- eventos_referencias()
+eventos_referencias <- function(meta = c("codTipoEvento","codSituacao")) {
+
+  for (i in seq_along(meta)) {
+    assertthat::assert_that(
+      meta[i] %in% c("codTipoEvento","codSituacao"),
+      msg = "Unknow argument passed to 'meta'"
+    )
+  }
+
+  path <- "referencias/eventos"
+
+  req <- main_api(path = path)
+
+  content <- req$dados
+
+  content$codTipoEvento <- tibble::as_tibble(content$codTipoEvento)
+  content$codSituacao <- tibble::as_tibble(content$codSituacao)
+
+
+  content[meta]
+}

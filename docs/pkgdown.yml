@@ -2,7 +2,8 @@ pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2020-12-28T19:37Z
+last_built: 2020-12-28T21:58Z
+
 urls:
   reference: https://pedrodrocha.com/camaradeputadosapi//reference
   article: https://pedrodrocha.com/camaradeputadosapi//articles
@@ -59,7 +60,3 @@ reference:
   desc: Query data on commissions and other legislative Bodies
 - contents:
   - starts_with("orgaos")
-- title: References
-  desc: Query metadata for data on deputados_(), eventos_(), orgaos_() and proposicoes_()
-- contents:
-  - starts_with("referencias")

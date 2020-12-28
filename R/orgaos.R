@@ -214,3 +214,35 @@ orgaos_votacoes <- function(id, ...) {
     tibble::as_tibble(content)
   }
 }
+
+
+#' @title Get metadata information on data related to 'orgaos'
+#'
+#' @param meta tables of metadata for querying
+#'
+#' @return A list of tibbles with metadata information on data related to the family 'eventos'
+#' @export
+#' @family orgaos
+#' @examples
+#' a <- orgaos_referencias()
+orgaos_referencias <- function(meta = c("idTipoOrgao","idSituacao")) {
+
+  for (i in seq_along(meta)) {
+    assertthat::assert_that(
+      meta[i] %in% c("idTipoOrgao","idSituacao"),
+      msg = "Unknow argument passed to 'meta'"
+    )
+  }
+
+  path <- "referencias/orgaos"
+
+  req <- main_api(path = path)
+
+  content <- req$dados
+
+  content$idTipoOrgao <- tibble::as_tibble(content$idTipoOrgao)
+  content$idSituacao <- tibble::as_tibble(content$idSituacao)
+
+
+  content[meta]
+}

@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">camaradeputadosapi</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
       </span>
     </div>
 
@@ -92,12 +92,7 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="https://github.com/pedrodrocha/camaradeputadosapi">
-    <span class="fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
+        
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -140,13 +135,18 @@
 <code><a href='proposicoes_autores.html'>proposicoes_autores</a>()</code>,
 <code><a href='proposicoes_historico.html'>proposicoes_historico</a>()</code>,
 <code><a href='proposicoes_info.html'>proposicoes_info</a>()</code>,
+<code><a href='proposicoes_referencias.html'>proposicoes_referencias</a>()</code>,
 <code><a href='proposicoes_relacionadas.html'>proposicoes_relacionadas</a>()</code>,
 <code><a href='proposicoes_votacoes.html'>proposicoes_votacoes</a>()</code>,
 <code><a href='proposicoes.html'>proposicoes</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>proposicoes_temas</span><span class='op'>(</span>id <span class='op'>=</span> <span class='fl'>15990</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in proposicoes_temas(id = 15990): não foi possível encontrar a função "proposicoes_temas"</span></div></pre>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 2 x 3</span><span>
+#&gt;   codTema tema                                  relevancia
+#&gt;     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                      </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>      62 Ciência, Tecnologia e Inovação                 0
+#&gt; </span><span style='color: #555555;'>2</span><span>      54 Energia, Recursos Hídricos e Minerais          0</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

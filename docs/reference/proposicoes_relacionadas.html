@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">camaradeputadosapi</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
       </span>
     </div>
 
@@ -92,12 +92,7 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="https://github.com/pedrodrocha/camaradeputadosapi">
-    <span class="fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
+        
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -140,13 +135,27 @@
 <code><a href='proposicoes_autores.html'>proposicoes_autores</a>()</code>,
 <code><a href='proposicoes_historico.html'>proposicoes_historico</a>()</code>,
 <code><a href='proposicoes_info.html'>proposicoes_info</a>()</code>,
+<code><a href='proposicoes_referencias.html'>proposicoes_referencias</a>()</code>,
 <code><a href='proposicoes_temas.html'>proposicoes_temas</a>()</code>,
 <code><a href='proposicoes_votacoes.html'>proposicoes_votacoes</a>()</code>,
 <code><a href='proposicoes.html'>proposicoes</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>proposicoes_relacionadas</span><span class='op'>(</span>id <span class='op'>=</span> <span class='fl'>15990</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in proposicoes_relacionadas(id = 15990): não foi possível encontrar a função "proposicoes_relacionadas"</span></div></pre>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 11 x 6</span><span>
+#&gt;         id siglaTipo codTipo numero ano   ementa                                
+#&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                 
+#&gt; </span><span style='color: #555555;'> 1</span><span> 2</span><span style='text-decoration: underline;'>184</span><span>014 PRL       190     1      0     </span><span style='color: #555555;'>"</span><span>Parecer do Relator, Dep. Rubens Pere~
+#&gt; </span><span style='color: #555555;'> 2</span><span> 2</span><span style='text-decoration: underline;'>215</span><span>965 PRL       190     2      0     </span><span style='color: #555555;'>"</span><span>Parecer do Relator, Dep. Lafayette d~
+#&gt; </span><span style='color: #555555;'> 3</span><span>   </span><span style='text-decoration: underline;'>71</span><span>343 PAR       187     1      0     </span><span style='color: #555555;'>""</span><span>                                    
+#&gt; </span><span style='color: #555555;'> 4</span><span>   </span><span style='text-decoration: underline;'>84</span><span>444 PRL       190     1      0     </span><span style='color: #555555;'>"</span><span>Parecer do Relator, Dep. Milton Teme~
+#&gt; </span><span style='color: #555555;'> 5</span><span>   </span><span style='text-decoration: underline;'>71</span><span>354 PAR       187     1      0     </span><span style='color: #555555;'>""</span><span>                                    
+#&gt; </span><span style='color: #555555;'> 6</span><span>   </span><span style='text-decoration: underline;'>84</span><span>443 PRL       190     1      0     </span><span style='color: #555555;'>"</span><span>PARECER FAVORAVEL DO RELATOR, DEP JO~
+#&gt; </span><span style='color: #555555;'> 7</span><span>   </span><span style='text-decoration: underline;'>71</span><span>347 SBT       255     1      0     </span><span style='color: #555555;'>""</span><span>                                    
+#&gt; </span><span style='color: #555555;'> 8</span><span>  </span><span style='text-decoration: underline;'>193</span><span>050 SBT       255     1      0     </span><span style='color: #555555;'>""</span><span>                                    
+#&gt; </span><span style='color: #555555;'> 9</span><span>  </span><span style='text-decoration: underline;'>580</span><span>957 REQ       339     7970   2013  </span><span style='color: #555555;'>"</span><span>Requerimento de reconstituição de pr~
+#&gt; </span><span style='color: #555555;'>10</span><span> 2</span><span style='text-decoration: underline;'>238</span><span>437 REQ       625     368    2020  </span><span style='color: #555555;'>"</span><span>Requer, com fulcro no art. 164, I, d~
+#&gt; </span><span style='color: #555555;'>11</span><span>   </span><span style='text-decoration: underline;'>71</span><span>351 VTS       260     1      0     </span><span style='color: #555555;'>""</span><span>                                    </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

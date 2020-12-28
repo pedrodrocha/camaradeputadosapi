@@ -239,3 +239,36 @@ proposicoes_votacoes <- function(id){
   }
 }
 
+#' @title Get metadata information on data related to 'proposicoes'
+#'
+#' @param meta tables of metadata for querying
+#'
+#' @return A list of tibbles with metadata information on data related to 'proposicoes'
+#' @export
+#' @family proposicoes
+#' @examples
+#' a <- proposicoes_referencias()
+proposicoes_referencias <- function(meta = c("siglaTipo","codSituacao","tiposTramitacao","codTema","codTipoAutor")) {
+
+  for (i in seq_along(meta)) {
+    assertthat::assert_that(
+      meta[i] %in% c("siglaTipo","codSituacao","tiposTramitacao","codTema","codTipoAutor"),
+      msg = "Unknow argument passed to 'meta'"
+    )
+  }
+
+
+  path <- "referencias/proposicoes"
+
+  req <- main_api(path = path)
+
+  content <- req$dados
+
+  content$siglaTipo <- tibble::as_tibble(content$siglaTipo)
+  content$codSituacao <- tibble::as_tibble(content$codSituacao)
+  content$tiposTramitacao <- tibble::as_tibble(content$tiposTramitacao)
+  content$codTema <- tibble::as_tibble(content$codTema)
+  content$codTipoAutor <- tibble::as_tibble(content$codTipoAutor)
+
+  content[meta]
+}

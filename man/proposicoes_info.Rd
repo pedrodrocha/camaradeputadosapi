@@ -22,6 +22,7 @@ proposicoes_info(id = 15990)
 Other proposicoes: 
 \code{\link{proposicoes_autores}()},
 \code{\link{proposicoes_historico}()},
+\code{\link{proposicoes_referencias}()},
 \code{\link{proposicoes_relacionadas}()},
 \code{\link{proposicoes_temas}()},
 \code{\link{proposicoes_votacoes}()},

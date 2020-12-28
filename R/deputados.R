@@ -1,6 +1,6 @@
 #' @title Get a list of representatives (current and historical)
 #'
-#' @param ... query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
+#' @param ... query parameters for the House of Representatives API (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info})
 #'
 #' @return A tibble with a list of representatives
 #' @export
@@ -342,5 +342,38 @@ deputados_orgaos <- function(id,...){
     tibble::as_tibble(content)
   }
 
+
+}
+
+
+#' @title Get metadata information on data related to 'deputados'
+#'
+#' @param meta tables of metadata for querying
+#'
+#' @return A list of tibbles with metadata information on data related to the family 'deputados'
+#' @export
+#' @family deputados
+#' @examples
+#' a <- deputados_referencias()
+deputados_referencias <- function(meta = c("siglaUF","siglaSituacao")) {
+
+  for (i in seq_along(meta)) {
+    assertthat::assert_that(
+      meta[i] %in% c("siglaUF","siglaSituacao"),
+      msg = "Unknow argument passed to 'meta'"
+    )
+  }
+
+
+  path <- "referencias/deputados"
+  req <- main_api(path = path)
+
+  content <- req$dados
+
+  content$siglaUF <- tibble::as_tibble(content$siglaUF)
+  content$siglaSituacao <- tibble::as_tibble(content$siglaSituacao)
+
+
+  content[meta]
 
 }

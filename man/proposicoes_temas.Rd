@@ -23,6 +23,7 @@ Other proposicoes:
 \code{\link{proposicoes_autores}()},
 \code{\link{proposicoes_historico}()},
 \code{\link{proposicoes_info}()},
+\code{\link{proposicoes_referencias}()},
 \code{\link{proposicoes_relacionadas}()},
 \code{\link{proposicoes_votacoes}()},
 \code{\link{proposicoes}()}

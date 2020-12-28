@@ -25,6 +25,7 @@ Other orgaos:
 \code{\link{orgaos_id}()},
 \code{\link{orgaos_info}()},
 \code{\link{orgaos_membros}()},
+\code{\link{orgaos_referencias}()},
 \code{\link{orgaos_votacoes}()}
 }
 \concept{orgaos}

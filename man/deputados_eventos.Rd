@@ -32,6 +32,7 @@ Other deputados:
 \code{\link{deputados_id}()},
 \code{\link{deputados_info}()},
 \code{\link{deputados_orgaos}()},
+\code{\link{deputados_referencias}()},
 \code{\link{deputados}()}
 }
 \concept{deputados}

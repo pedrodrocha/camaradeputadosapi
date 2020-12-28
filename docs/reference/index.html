@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">camaradeputadosapi</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
       </span>
     </div>
 
@@ -91,12 +91,7 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="https://github.com/pedrodrocha/camaradeputadosapi">
-    <span class="fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
+        
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -124,8 +119,8 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-representatives" class="hasAnchor"><a href="#section-representatives" class="anchor"></a>Representatives</h2>
-          <p class="section-desc"><p>Query data on representatives that are or once were in office.</p></p>
+          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+          <p class="section-desc"></p>
         </th>
       </tr>
       
@@ -134,6 +129,12 @@
       
       
       <tr>
+        
+        <td>
+          <p><code><a href="check_date.html">check_date()</a></code> </p>
+        </td>
+        <td><p>Check date</p></td>
+      </tr><tr>
         
         <td>
           <p><code><a href="deputados.html">deputados()</a></code> </p>
@@ -181,20 +182,13 @@
           <p><code><a href="deputados_orgaos.html">deputados_orgaos()</a></code> </p>
         </td>
         <td><p>Get a list of bodies and commissions a representative is member</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-events" class="hasAnchor"><a href="#section-events" class="anchor"></a>Events</h2>
-          <p class="section-desc"><p>Query data on events that occurred or are on schedule.</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="deputados_referencias.html">deputados_referencias()</a></code> </p>
+        </td>
+        <td><p>Get metadata information on data related to 'deputados'</p></td>
+      </tr><tr>
         
         <td>
           <p><code><a href="eventos.html">eventos()</a></code> </p>
@@ -227,23 +221,16 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="eventos_referencias.html">eventos_referencias()</a></code> </p>
+        </td>
+        <td><p>Get metadata information on data related to 'eventos'</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="eventos_votacoes.html">eventos_votacoes()</a></code> </p>
         </td>
         <td><p>Get information for a voting event</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-parliamentary-fronts" class="hasAnchor"><a href="#section-parliamentary-fronts" class="anchor"></a>Parliamentary fronts</h2>
-          <p class="section-desc"><p>Query data on parliamentary fronts.</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
+      </tr><tr>
         
         <td>
           <p><code><a href="frentes.html">frentes()</a></code> </p>
@@ -267,20 +254,7 @@
           <p><code><a href="frentes_membros.html">frentes_membros()</a></code> </p>
         </td>
         <td><p>Get a list of members for a given parliamentary front</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-legislative-periods" class="hasAnchor"><a href="#section-legislative-periods" class="anchor"></a>Legislative periods</h2>
-          <p class="section-desc"><p>Query data on legislative periods.</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
+      </tr><tr>
         
         <td>
           <p><code><a href="legislaturas.html">legislaturas()</a></code> </p>
@@ -304,155 +278,13 @@
           <p><code><a href="legislaturas_mesa.html">legislaturas_mesa()</a></code> </p>
         </td>
         <td><p>Get information of speakers for the House of Representative for a given legislative period</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-political-parties" class="hasAnchor"><a href="#section-political-parties" class="anchor"></a>Political Parties</h2>
-          <p class="section-desc"><p>Query data on political parties.</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="partidos.html">partidos()</a></code> </p>
-        </td>
-        <td><p>Get a list of political parties that had or current have representatives in office</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="partidos_blocos.html">partidos_blocos()</a></code> </p>
+          <p><code><a href="main_api.html">main_api()</a></code> </p>
         </td>
-        <td><p>Get a list of blocs in the current legislative term at the Brazilian House of Representatives</p></td>
+        <td><p>Main GET function for Brazilian lower house API</p></td>
       </tr><tr>
-        
-        <td>
-          <p><code><a href="partidos_id.html">partidos_id()</a></code> </p>
-        </td>
-        <td><p>Extract a Brazilian Political Party ID</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="partidos_info.html">partidos_info()</a></code> </p>
-        </td>
-        <td><p>Get information about a Brazilian political party</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="partidos_membros.html">partidos_membros()</a></code> </p>
-        </td>
-        <td><p>Get a list of representatives that are or were in office for a given Brazilian political party</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-propositions" class="hasAnchor"><a href="#section-propositions" class="anchor"></a>Propositions</h2>
-          <p class="section-desc"><p>Query data on propositions</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="proposicoes.html">proposicoes()</a></code> </p>
-        </td>
-        <td><p>Get a list of propositions discussed in between a time interval</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="proposicoes_autores.html">proposicoes_autores()</a></code> </p>
-        </td>
-        <td><p>Get a list with authors of a given proposition</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="proposicoes_historico.html">proposicoes_historico()</a></code> </p>
-        </td>
-        <td><p>Get the historical record of a proposition at the House of Representatives</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="proposicoes_info.html">proposicoes_info()</a></code> </p>
-        </td>
-        <td><p>Get detailed information about a proposition of Brazilian House of Representatives</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="proposicoes_relacionadas.html">proposicoes_relacionadas()</a></code> </p>
-        </td>
-        <td><p>Get a list of propositions related to a given proposition</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="proposicoes_temas.html">proposicoes_temas()</a></code> </p>
-        </td>
-        <td><p>Get a list of thematic areas related to a given proposition</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="proposicoes_votacoes.html">proposicoes_votacoes()</a></code> </p>
-        </td>
-        <td><p>Get information on voting procedures of a proposition and that affected a proposition</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-voting-processes" class="hasAnchor"><a href="#section-voting-processes" class="anchor"></a>Voting processes</h2>
-          <p class="section-desc"><p>Query data on voting proccess.</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="votacoes.html">votacoes()</a></code> </p>
-        </td>
-        <td><p>Get a list of voting processes</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="votacoes_info.html">votacoes_info()</a></code> </p>
-        </td>
-        <td><p>Get detailed information on voting processes</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="votacoes_orientacoes.html">votacoes_orientacoes()</a></code> </p>
-        </td>
-        <td><p>Get voting guideline for a political party on a given voting process</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="votacoes_votos.html">votacoes_votos()</a></code> </p>
-        </td>
-        <td><p>Get information on representatives voting behavior for a given voting process</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-bodies-and-commissions" class="hasAnchor"><a href="#section-bodies-and-commissions" class="anchor"></a>Bodies and Commissions</h2>
-          <p class="section-desc"><p>Query data on commissions and other legislative Bodies</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
         
         <td>
           <p><code><a href="orgaos.html">orgaos()</a></code> </p>
@@ -485,46 +317,123 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="orgaos_referencias.html">orgaos_referencias()</a></code> </p>
+        </td>
+        <td><p>Get metadata information on data related to 'orgaos'</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="orgaos_votacoes.html">orgaos_votacoes()</a></code> </p>
         </td>
         <td><p>Get information on voting procedures in a body or commission</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-references" class="hasAnchor"><a href="#section-references" class="anchor"></a>References</h2>
-          <p class="section-desc"><p>Query metadata for data on deputados_(), eventos_(), orgaos_() and proposicoes_()</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="referencias_deputados.html">referencias_deputados()</a></code> </p>
-        </td>
-        <td><p>Get metadata information on data related to the family 'deputados'</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="referencias_eventos.html">referencias_eventos()</a></code> </p>
+          <p><code><a href="partidos.html">partidos()</a></code> </p>
         </td>
-        <td><p>Get metadata information on data related to the family 'eventos'</p></td>
+        <td><p>Get a list of political parties that had or current have representatives in office</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="referencias_orgaos.html">referencias_orgaos()</a></code> </p>
+          <p><code><a href="partidos_blocos.html">partidos_blocos()</a></code> </p>
         </td>
-        <td><p>Get metadata information on data related to the family 'orgaos'</p></td>
+        <td><p>Get a list of blocs in the current legislative term at the Brazilian House of Representatives</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="referencias_proposicoes.html">referencias_proposicoes()</a></code> </p>
+          <p><code><a href="partidos_id.html">partidos_id()</a></code> </p>
         </td>
-        <td><p>Get metadata information on data related to the family 'proposicoes'</p></td>
+        <td><p>Extract a Brazilian Political Party ID</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="partidos_info.html">partidos_info()</a></code> </p>
+        </td>
+        <td><p>Get information about a Brazilian political party</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="partidos_membros.html">partidos_membros()</a></code> </p>
+        </td>
+        <td><p>Get a list of representatives that are or were in office for a given Brazilian political party</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="proposicoes.html">proposicoes()</a></code> </p>
+        </td>
+        <td><p>Get a list of propositions discussed in between a time interval</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="proposicoes_autores.html">proposicoes_autores()</a></code> </p>
+        </td>
+        <td><p>Get a list with authors of a given proposition</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="proposicoes_historico.html">proposicoes_historico()</a></code> </p>
+        </td>
+        <td><p>Get the historical record of a proposition at the House of Representatives</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="proposicoes_info.html">proposicoes_info()</a></code> </p>
+        </td>
+        <td><p>Get detailed information about a proposition of Brazilian House of Representatives</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="proposicoes_referencias.html">proposicoes_referencias()</a></code> </p>
+        </td>
+        <td><p>Get metadata information on data related to 'proposicoes'</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="proposicoes_relacionadas.html">proposicoes_relacionadas()</a></code> </p>
+        </td>
+        <td><p>Get a list of propositions related to a given proposition</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="proposicoes_temas.html">proposicoes_temas()</a></code> </p>
+        </td>
+        <td><p>Get a list of thematic areas related to a given proposition</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="proposicoes_votacoes.html">proposicoes_votacoes()</a></code> </p>
+        </td>
+        <td><p>Get information on voting procedures of a proposition and that affected a proposition</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="votacoes.html">votacoes()</a></code> </p>
+        </td>
+        <td><p>Get a list of voting processes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="votacoes_info.html">votacoes_info()</a></code> </p>
+        </td>
+        <td><p>Get detailed information on voting processes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="votacoes_orientacoes.html">votacoes_orientacoes()</a></code> </p>
+        </td>
+        <td><p>Get voting guideline for a political party on a given voting process</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="votacoes_votos.html">votacoes_votos()</a></code> </p>
+        </td>
+        <td><p>Get information on representatives voting behavior for a given voting process</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="zero_or_null.html">zero_or_null()</a></code> </p>
+        </td>
+        <td><p>Check a list for zero or null entries</p></td>
       </tr>
     </tbody>
     </table>
