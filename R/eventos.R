@@ -12,12 +12,12 @@ eventos <- function(...){
 
   query_list <- list(...)
 
-  req <- deputados_api("eventos",query_list)
+  req <- main_api("eventos",query_list)
 
   content <- req$dados
 
   if (length(content) == 0) {
-    warning("There is no data for this entry.", call. = FALSE)
+    warning("There is no data for this entry", call. = FALSE)
   }
 
   if ("uri" %in% names(content)) {
@@ -47,7 +47,7 @@ eventos_info <- function(id) {
   }
 
   path <- paste0("eventos/", id)
-  req <- deputados_api(path)
+  req <- main_api(path)
 
   content <- req$dados
 
@@ -98,7 +98,7 @@ eventos_deputados <- function(id) {
   }
 
   path <- paste0("eventos/", id, "/deputados")
-  req <- deputados_api(path)
+  req <- main_api(path)
 
   content <- req$dados
 
@@ -134,7 +134,7 @@ eventos_orgaos <- function(id){
   }
 
   path <- paste0("eventos/", id, "/orgaos")
-  req <- deputados_api(path)
+  req <- main_api(path)
 
   content <- req$dados
 
@@ -169,7 +169,7 @@ eventos_pauta <- function(id) {
   }
 
   path <- paste0("eventos/", id, "/pauta")
-  req <- deputados_api(path)
+  req <- main_api(path)
 
   content <- req$dados
 
@@ -207,7 +207,7 @@ eventos_votacoes <- function(id) {
   }
 
   path <- paste0("eventos/", id, "/votacoes")
-  req <- deputados_api(path)
+  req <- main_api(path)
 
   content <- req$dados
 

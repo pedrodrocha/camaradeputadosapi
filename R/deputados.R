@@ -13,7 +13,7 @@ deputados <- function(...) {
 
   query_list <- list(...)
 
-  req <- deputados_api("deputados",query_list)
+  req <- main_api("deputados",query_list)
 
   if (length(req$dados) == 0) {
     warning("There is no data for this entry.", call. = FALSE)
@@ -80,7 +80,7 @@ deputados_info <- function(id, ...) {
   query_list <- list(...)
 
   path <- paste0("deputados/",id)
-  req <- deputados_api(path,query_list)
+  req <- main_api(path,query_list)
 
   content <- req$dados
 
@@ -154,7 +154,7 @@ deputados_despesas <- function(id, year, ...) {
     )
 
     path <- paste0("deputados/",id,"/despesas")
-    req <- deputados_api(path,query_list)
+    req <- main_api(path,query_list)
 
     content <- req$dados
 
@@ -200,7 +200,7 @@ deputados_discursos <- function(id, from, ...) {
   )
 
   path <- paste0("deputados/",id, "/discursos")
-  req <- deputados_api(path,query_list)
+  req <- main_api(path,query_list)
 
   content <- req$dados
 
@@ -245,7 +245,7 @@ deputados_eventos <- function(id, from, to, ...) {
   )
 
   path <- paste0("deputados/",id, "/eventos")
-  req <- deputados_api(path,query_list)
+  req <- main_api(path,query_list)
 
   content <- req$dados
 
@@ -286,7 +286,7 @@ deputados_frentes <- function(id,...) {
   query_list <- list(...)
 
   path <- paste0("deputados/",id, "/frentes")
-  req <- deputados_api(path,query_list)
+  req <- main_api(path,query_list)
 
   content <- req$dados
 
@@ -324,7 +324,7 @@ deputados_orgaos <- function(id,...){
   query_list <- list(...)
 
   path <- paste0("deputados/",id, "/orgaos")
-  req <- deputados_api(path,query_list)
+  req <- main_api(path,query_list)
 
   content <- req$dados
 

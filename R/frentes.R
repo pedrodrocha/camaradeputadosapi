@@ -12,7 +12,7 @@
 frentes <- function(...) {
   query_list <- list(...)
 
-  req <- deputados_api("frentes",query_list)
+  req <- main_api("frentes",query_list)
 
   content <- req$dados
 
@@ -82,7 +82,7 @@ frentes_info <- function(id) {
 
 
   path <- paste0("frentes/",id)
-  req <- deputados_api(path)
+  req <- main_api(path)
 
   content <- req$dados
 
@@ -136,7 +136,7 @@ frentes_membros <- function(id) {
 
 
   path <- paste0("frentes/",id, "/membros")
-  req <- deputados_api(path)
+  req <- main_api(path)
 
   content <- req$dados
 

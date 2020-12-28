@@ -5,7 +5,7 @@
 #' @param args list of query arguments
 #'
 #' @return list
-deputados_api <- function(path, args = NULL) {
+main_api <- function(path, args = NULL) {
 
   assertthat::assert_that(is.character(path))
 

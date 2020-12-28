@@ -11,7 +11,7 @@ legislaturas <- function(...) {
 
   query_list <- list(...)
 
-  req <- deputados_api("legislaturas",query_list)
+  req <- main_api("legislaturas",query_list)
 
   content <- req$dados
 
@@ -71,7 +71,7 @@ legislaturas_info <- function(id) {
 
 
   path <- paste0("legislaturas/",id)
-  req <- deputados_api(path)
+  req <- main_api(path)
 
   content <- req$dados
 
@@ -101,7 +101,7 @@ legislaturas_mesa <- function(id,...) {
 
 
   path <- paste0("legislaturas/",id, "/mesa")
-  req <- deputados_api(path, query_list)
+  req <- main_api(path, query_list)
 
   content <- req$dados
 

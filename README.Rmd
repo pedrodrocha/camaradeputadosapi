@@ -43,12 +43,12 @@ In its final stage the package is expected to cover nine families of functions f
 - `legislaturas()` & `legislaturas_*()`: For querying data on legislative periods.  
 - `partidos()` & `partidos_*()`: For querying data on political parties.  
 - `proposicoes()` & `proposicoes_*()`: For querying data on propositions.  
-- `votacoes()` & `votacoes_*()`: For querying data on voting processes (**NOT AVAILABLE YET**).
+- `votacoes()` & `votacoes_*()`: For querying data on voting processes.
 - `orgaos()` & `orgaos_*()`: For querying data on commissions and other legislative bodies (**NOT AVAILABLE YET**).  
 - `referencias_*()`: For querying data on available variables and its values (**NOT AVAILABLE YET**).  
 
 
-**OBS:** By default the API returns only 15 results per request and the limit is 100 results. When appropriate make sure to add `itens= N` as a parameter for greater control.
+**OBS:** In general the API returns by default only 15 results per request and the max limit is 100 results, but for querying voting data the default value and the max limit is 200. When appropriate make sure to add `itens= N` as a parameter for greater control.
 
 
 

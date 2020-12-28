@@ -21,7 +21,7 @@ proposicoes <- function(..., from, to) {
     ...
   )
 
-  req <- deputados_api("proposicoes",query_list)
+  req <- main_api("proposicoes",query_list)
 
   content <- req$dados
 
@@ -53,7 +53,7 @@ proposicoes_info <- function(id) {
 
 
   path <- paste0("proposicoes/",id)
-  req <- deputados_api(path)
+  req <- main_api(path)
 
   content <- req$dados
 
@@ -93,7 +93,7 @@ proposicoes_autores <- function(id) {
 
 
   path <- paste0("proposicoes/",id, "/autores")
-  req <- deputados_api(path)
+  req <- main_api(path)
 
   content <- req$dados
 
@@ -125,7 +125,7 @@ proposicoes_relacionadas <- function(id) {
 
 
   path <- paste0("proposicoes/",id, "/relacionadas")
-  req <- deputados_api(path)
+  req <- main_api(path)
 
   content <- req$dados
 
@@ -158,7 +158,7 @@ proposicoes_temas <- function(id) {
 
 
   path <- paste0("proposicoes/",id, "/temas")
-  req <- deputados_api(path)
+  req <- main_api(path)
 
   content <- req$dados
 
@@ -190,7 +190,7 @@ proposicoes_historico <- function(id){
 
 
   path <- paste0("proposicoes/",id, "/tramitacoes")
-  req <- deputados_api(path)
+  req <- main_api(path)
 
   content <- req$dados
 
@@ -222,7 +222,7 @@ proposicoes_votacoes <- function(id){
 
 
   path <- paste0("proposicoes/",id, "/votacoes")
-  req <- deputados_api(path)
+  req <- main_api(path)
 
   content <- req$dados
 
