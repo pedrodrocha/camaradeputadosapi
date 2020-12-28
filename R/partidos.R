@@ -145,3 +145,30 @@ partidos_membros <- function(id, ...) {
     tibble::as_tibble(content)
   }
 }
+
+
+#' @title Get a list of blocs in the current legislative term at the Brazilian House of Representatives
+#'
+#' @return A tibble of blocs in the current legislative term at the Brazilian House of Representatives
+#' @export
+#' @family partidos
+#' @examples
+#' partidos_blocos()
+partidos_blocos <- function() {
+
+  req <- deputados_api("blocos")
+
+  content <- req$dados
+
+  if ("uri" %in% names(content)) {
+    tibble::as_tibble(content) %>%
+      dplyr::select(-uri) %>%
+      dplyr::rename("composicao" = nome)
+
+  } else {
+    tibble::as_tibble(content) %>%
+      dplyr::rename("composicao" = nome)
+  }
+}
+
+

@@ -28,7 +28,6 @@ frentes <- function(...) {
     tibble::as_tibble(content)
   }
 
-  tibble::as_tibble(content)
 }
 
 #' @title Extract a parliamentary front Id

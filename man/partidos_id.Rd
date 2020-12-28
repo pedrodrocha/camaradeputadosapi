@@ -20,6 +20,7 @@ a <- partidos_id(abbr = "PT")
 }
 \seealso{
 Other partidos: 
+\code{\link{partidos_blocos}()},
 \code{\link{partidos_info}()},
 \code{\link{partidos_membros}()},
 \code{\link{partidos}()}

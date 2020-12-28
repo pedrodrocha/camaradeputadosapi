@@ -21,6 +21,7 @@ b <- partidos(itens = 100, idLegislatura = 55)
 }
 \seealso{
 Other partidos: 
+\code{\link{partidos_blocos}()},
 \code{\link{partidos_id}()},
 \code{\link{partidos_info}()},
 \code{\link{partidos_membros}()}
