@@ -2,6 +2,7 @@
 #'
 #' @param list receives a list
 #'
+#' @return a list that has been cleared of length 0 and NULL values
 zero_or_null <- function (list){
 
   zero_null <- rlist::list.which(list, length(.) < 1)
@@ -21,7 +22,7 @@ zero_or_null <- function (list){
 #'
 #' @param date a date entry for check
 #'
-#' @return a date
+#' @return a date that has been checked
 check_date <- function(date) {
   date <- suppressWarnings(lubridate::ymd(date))
 
@@ -38,5 +39,3 @@ check_date <- function(date) {
 
   date
 }
-
-

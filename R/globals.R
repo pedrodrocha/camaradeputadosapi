@@ -1,0 +1,2 @@
+utils::globalVariables(c("telefone","andar","email",".","idLegislatura","nome","predio","sala","siglaPartido","siglaUf","titulo","uf","uriAutores","uri","uriConvidados","uriDeputados","uriEvento","uriMembros","uriOrgao","uriOrgaoNumerador","uriPartido","uriPartidoBloco","uriPropAnterior","uriPropPosterior","uriPropPrincipal","uriProposicaoCitada","uriProposicaoObjeto","uriProposicaoRelacionada","uriUltimoRelator","uriVotacao","urlFoto"))
+
