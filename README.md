@@ -47,8 +47,8 @@ functions for querying each type of data provided by the API:
     processes.
   - `orgaos()` & `orgaos_*()`: For querying data on commissions and
     other legislative bodies.  
-  - `referencias_*()`: For querying data on available variables and its
-    values (**NOT AVAILABLE YET**).
+  - `referencias_*()`: For querying metadata for available variables and
+    its values (**NOT AVAILABLE YET**).
 
 **OBS:** In general the API returns by default only 15 results per
 request and the max limit is 100 results, but for querying voting data
