@@ -14,8 +14,8 @@ data [RESTful API](https://dadosabertos.camara.leg.br/swagger/api.html).
 
 The package is under active development, but some functionalities are
 already on. Note that in this state of the project there isn’t proper
-documentation and breaking changes are expected. In any case, user
-feedback is welcome and valued.
+documentation and breaking changes are expected to occur. In any case,
+user feedback is welcome and valued.
 
 ## Instalation
 
