@@ -2,20 +2,18 @@
 % Please edit documentation in R/deputados.R
 \name{deputados_info}
 \alias{deputados_info}
-\title{Get general information for a representative}
+\title{Get general information from a representative}
 \usage{
-deputados_info(id, ...)
+deputados_info(id)
 }
 \arguments{
-\item{id}{representative id}
-
-\item{...}{query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
+\item{id}{An unique identifier for a given representative}
 }
 \value{
-a tibble with general information for a representative
+A tibble with general information for a representative
 }
 \description{
-Get general information for a representative
+Returns general information from a given representative that in any moment in history held office at the Brazilian House of Representatives
 }
 \examples{
 a <- deputados_info(id = 204554)

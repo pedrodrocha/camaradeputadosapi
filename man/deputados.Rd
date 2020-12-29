@@ -2,18 +2,20 @@
 % Please edit documentation in R/deputados.R
 \name{deputados}
 \alias{deputados}
-\title{Get a list of representatives (current and historical)}
+\title{Get a list of representatives}
 \usage{
 deputados(...)
 }
 \arguments{
-\item{...}{query parameters for the House of Representatives API (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info})}
+\item{...}{query parameters for the Brazilian House of Representatives API}
 }
 \value{
 A tibble with a list of representatives
 }
 \description{
-Get a list of representatives (current and historical)
+Returns a list of representatives that are or were in office in a period of time.
+If query parameters from the API such as 'idLegislatura' or 'dataInicio' are not used, it will return only representatives currently in office.
+For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
 }
 \examples{
 a <- deputados()

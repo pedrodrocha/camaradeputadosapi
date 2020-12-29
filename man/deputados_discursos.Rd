@@ -2,22 +2,23 @@
 % Please edit documentation in R/deputados.R
 \name{deputados_discursos}
 \alias{deputados_discursos}
-\title{Get representative speeches}
+\title{Get a representative speeches}
 \usage{
-deputados_discursos(id, from, ...)
+deputados_discursos(id, ...)
 }
 \arguments{
-\item{id}{representative id}
+\item{id}{An unique identifier for a given representative}
 
-\item{from}{the beginning date (YYYY-MM-DD) you want to collect speeches}
-
-\item{...}{query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
+\item{...}{query parameters for the Brazilian House of Representatives API}
 }
 \value{
 a tibble with speeches from the representative
 }
 \description{
-Get representative speeches
+Get speeches by a given representative that were officially registered at the Brazilian House of Representatives.
+By default it returns 15 results per request with a max limit of 100 results. You can control the number of results with the API parameter 'itens'.
+If query parameters from the API such as 'dataInicio', 'dataFim' or 'idLegislatura' are not used, it will return only speeches registered in the last 7 days.
+For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
 }
 \examples{
 a <- deputados_discursos(id = deputados_id("Rodrigo Maia"), "2020-01-01")

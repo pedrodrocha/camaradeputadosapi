@@ -2,24 +2,26 @@
 % Please edit documentation in R/deputados.R
 \name{deputados_eventos}
 \alias{deputados_eventos}
-\title{Get a list of events the representative was present}
+\title{Get a list of events a representative was present}
 \usage{
 deputados_eventos(id, from, to, ...)
 }
 \arguments{
-\item{id}{A representative id}
+\item{id}{An unique identifier for a given representative}
 
 \item{from}{the beginning date (YYYY-MM-DD) you want to collect events}
 
 \item{to}{the end date (YYYY-MM-DD) you want to collect events}
 
-\item{...}{query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
+\item{...}{query parameters for the Brazilian House of Representatives API}
 }
 \value{
-A tibble with events the representative was present
+A tibble with events a representative was present
 }
 \description{
-Get a list of events the representative was present
+Get a list of events a representative was present in a given period of time.
+By default it returns 15 results per request with a max limit of 100 results. You can control the number of results with the API parameter 'itens'.
+For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
 }
 \examples{
 deputados_eventos(id = 74646, from = "2020-11-01", to = "2020-12-01")

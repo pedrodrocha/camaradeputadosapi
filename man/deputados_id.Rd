@@ -7,10 +7,10 @@
 deputados_id(name)
 }
 \arguments{
-\item{name}{The name of the representative you want to extract the id}
+\item{name}{A representative name}
 }
 \value{
-The id of the representative
+The id of a representative
 }
 \description{
 Extract a representative Id

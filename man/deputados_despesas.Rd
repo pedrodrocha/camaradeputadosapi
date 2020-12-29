@@ -2,22 +2,24 @@
 % Please edit documentation in R/deputados.R
 \name{deputados_despesas}
 \alias{deputados_despesas}
-\title{Get representative expenditures while in office for a given year}
+\title{Get a representative expenditures while in office for a given year}
 \usage{
 deputados_despesas(id, year, ...)
 }
 \arguments{
-\item{id}{representative id}
+\item{id}{An unique identifier for a given representative}
 
-\item{year}{a year for checking the expenditures of a given representative}
+\item{year}{a given year for checking expenditures}
 
-\item{...}{query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
+\item{...}{query parameters for the Brazilian House of Representatives API}
 }
 \value{
 a tibble of a representative expenditures while in office for a given year
 }
 \description{
-Get representative expenditures while in office for a given year
+Provides access to payments and reimbursements made by the House of Representatives on behalf of a representative for given a year.
+By default it returns 15 results per request with a max limit of 100 results. You can control the number of results with the API parameter 'itens'.
+For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
 }
 \examples{
 a <- deputados_despesas(id = deputados_id(name = "Eduardo Cunha"), 2013)

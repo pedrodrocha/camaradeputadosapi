@@ -1,6 +1,13 @@
-#' @title Get a list of representatives (current and historical)
+#' @title Get a list of representatives
 #'
-#' @param ... query parameters for the House of Representatives API (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info})
+#' @description
+#'
+#' Returns a list of representatives that are or were in office in a period of time.
+#' If query parameters from the API such as 'idLegislatura' or 'dataInicio' are not used, it will return only representatives currently in office.
+#' For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
+#'
+#'
+#' @param ... query parameters for the Brazilian House of Representatives API
 #'
 #' @return A tibble with a list of representatives
 #' @export
@@ -13,18 +20,23 @@ deputados <- function(...) {
 
   query_list <- list(...)
 
-  req <- main_api("deputados",query_list)
+  if (length(query_list) > 0) {
+    check_api_parameters(names(query_list), query_list)
 
-  if (length(req$dados) == 0) {
-    warning("There is no data for this entry.", call. = FALSE)
   }
 
-  if ("uri" %in% names(req$dados)) {
-    tibble::as_tibble(req$dados) %>%
+  req <- main_api("deputados",query_list)
+
+  content <- req$dados
+
+  not_zero_content(content)
+
+  if ("uri" %in% names(content)) {
+    tibble::as_tibble(content) %>%
       dplyr::select(-c(uri,uriPartido))
 
   } else {
-    tibble::as_tibble(req$dados)
+    tibble::as_tibble(content)
   }
 
 
@@ -33,26 +45,23 @@ deputados <- function(...) {
 
 #' @title Extract a representative Id
 #'
-#' @param name The name of the representative you want to extract the id
+#' @param name A representative name
 #'
-#' @return The id of the representative
+#' @return The id of a representative
 #' @export
 #' @family deputados
 #' @examples
 #' a <- deputados_id(name = "Afonso Arinos")
 deputados_id <- function(name) {
 
-  id <- tryCatch(
-    deputados(nome = name)$id,
-    error = function(e) {
-      stop("404 Not found")
-    }
-  )
+  assertthat::assert_that(!missing(name),msg = "'name' is missing")
+
+  id <- deputados(nome = name)$id
 
   tryCatch(
     assertthat::assert_that(length(id) == 1),
     error = function(e) {
-      stop("More than one Id found, can you be more specific?")
+      stop("More than one Id found, can you be more specific?", call. = FALSE)
     }
   )
 
@@ -61,26 +70,29 @@ deputados_id <- function(name) {
 }
 
 
-#' @title Get general information for a representative
+#' @title Get general information from a representative
 #'
-#' @param id representative id
-#' @param ... query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
+#' @description
+#' Returns general information from a given representative that in any moment in history held office at the Brazilian House of Representatives
 #'
-#' @return a tibble with general information for a representative
+#' @param id An unique identifier for a given representative
+#'
+#' @return A tibble with general information for a representative
 #' @export
 #' @family deputados
 #' @examples
 #' a <- deputados_info(id = 204554)
-deputados_info <- function(id, ...) {
+deputados_info <- function(id) {
+
+  assertthat::assert_that(!missing(id),msg = "'id' is missing")
 
   if (is.numeric(id)) {
     id <- as.character(id)
   }
 
-  query_list <- list(...)
 
   path <- paste0("deputados/",id)
-  req <- main_api(path,query_list)
+  req <- main_api(path)
 
   content <- req$dados
 
@@ -121,11 +133,16 @@ deputados_info <- function(id, ...) {
 
 }
 
-#' @title Get representative expenditures while in office for a given year
+#' @title Get a representative expenditures while in office for a given year
 #'
-#' @param id representative id
-#' @param ... query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
-#' @param year a year for checking the expenditures of a given representative
+#' @description
+#' Provides access to payments and reimbursements made by the House of Representatives on behalf of a representative for given a year.
+#' By default it returns 15 results per request with a max limit of 100 results. You can control the number of results with the API parameter 'itens'.
+#' For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
+#'
+#' @param id An unique identifier for a given representative
+#' @param ... query parameters for the Brazilian House of Representatives API
+#' @param year a given year for checking expenditures
 #'
 #' @return a tibble of a representative expenditures while in office for a given year
 #' @export
@@ -134,7 +151,8 @@ deputados_info <- function(id, ...) {
 #' a <- deputados_despesas(id = deputados_id(name = "Eduardo Cunha"), 2013)
 deputados_despesas <- function(id, year, ...) {
 
-  assertthat::has_args(deputados_despesas,args = year)
+  assertthat::assert_that(!missing(id),msg = "'id' is missing")
+  assertthat::assert_that(!missing(year),msg = "'year' is missing")
 
   if (is.numeric(id)) {
     id <- as.character(id)
@@ -153,18 +171,14 @@ deputados_despesas <- function(id, year, ...) {
       ...
     )
 
+    max_limit100(names(query_list),query_list)
+
     path <- paste0("deputados/",id,"/despesas")
     req <- main_api(path,query_list)
 
     content <- req$dados
 
-    tryCatch(
-      assertthat::assert_that(length(content) > 0),
-      error = function(e) {
-        stop("There are no entries for or more parameters you specified. Try again")
-      }
-
-    )
+    not_zero_content(content)
 
     dat <- dplyr::bind_rows(dat, content)
 
@@ -173,36 +187,45 @@ deputados_despesas <- function(id, year, ...) {
 }
 
 
-#' @title Get representative speeches
+#' @title Get a representative speeches
 #'
-#' @param id representative id
-#' @param ... query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
-#' @param from the beginning date (YYYY-MM-DD) you want to collect speeches
+#' @description
+#'
+#' Get speeches by a given representative that were officially registered at the Brazilian House of Representatives.
+#' By default it returns 15 results per request with a max limit of 100 results. You can control the number of results with the API parameter 'itens'.
+#' If query parameters from the API such as 'dataInicio', 'dataFim' or 'idLegislatura' are not used, it will return only speeches registered in the last 7 days.
+#' For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
+#'
+#'
+#' @param id An unique identifier for a given representative
+#' @param ... query parameters for the Brazilian House of Representatives API
+#'
 #'
 #' @return a tibble with speeches from the representative
 #' @export
 #' @family deputados
 #' @examples
 #' a <- deputados_discursos(id = deputados_id("Rodrigo Maia"), "2020-01-01")
-deputados_discursos <- function(id, from, ...) {
+deputados_discursos <- function(id, ...) {
 
-  assertthat::has_args(deputados_discursos,args = from)
+  assertthat::assert_that(!missing(id),msg = "'id' is missing")
 
-  from <- check_date(from)
 
   if (is.numeric(id)) {
     id <- as.character(id)
   }
 
-  query_list <- list(
-    dataInicio = from,
-    ...
-  )
+  query_list <- list(...)
+
+  max_limit100(names(query_list),query_list)
+  check_api_parameters(names(query_list),query_list)
 
   path <- paste0("deputados/",id, "/discursos")
   req <- main_api(path,query_list)
 
   content <- req$dados
+
+  not_zero_content(content)
 
   if ("uri" %in% names(content)) {
     tibble::as_tibble(content) %>%
@@ -216,20 +239,30 @@ deputados_discursos <- function(id, from, ...) {
 
 
 
-#' Get a list of events the representative was present
+#' @title  Get a list of events a representative was present
 #'
-#' @param id A representative id
+#'
+#' @description
+#'
+#' Get a list of events a representative was present in a given period of time.
+#' By default it returns 15 results per request with a max limit of 100 results. You can control the number of results with the API parameter 'itens'.
+#' For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
+#'
+#' @param id An unique identifier for a given representative
 #' @param from the beginning date (YYYY-MM-DD) you want to collect events
 #' @param to the end date (YYYY-MM-DD) you want to collect events
-#' @param ... query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
+#' @param ... query parameters for the Brazilian House of Representatives API
 #'
-#' @return A tibble with events the representative was present
+#' @return A tibble with events a representative was present
 #' @export
 #' @family deputados
 #' @examples deputados_eventos(id = 74646, from = "2020-11-01", to = "2020-12-01")
 
 deputados_eventos <- function(id, from, to, ...) {
-  assertthat::has_args(deputados_eventos, args = c(from,to))
+
+  assertthat::assert_that(!missing(id),msg = "'id' is missing")
+  assertthat::assert_that(!missing(from),msg = "'from' is missing")
+  assertthat::assert_that(!missing(to),msg = "'to' is missing")
 
   from <- check_date(from)
   to <- check_date(to)
@@ -243,17 +276,16 @@ deputados_eventos <- function(id, from, to, ...) {
     dataFim = to,
     ...
   )
+  max_limit100(names(query_list),query_list)
+  check_api_parameters(names(query_list),query_list)
+
 
   path <- paste0("deputados/",id, "/eventos")
   req <- main_api(path,query_list)
 
   content <- req$dados
 
-  if (length(content) == 0) {
-
-    warning("There is no data for this entry.", call. = FALSE)
-
-  }
+  not_zero_content(content)
 
   if ("uri" %in% names(content)) {
     tibble::as_tibble(content) %>%

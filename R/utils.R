@@ -17,25 +17,3 @@ zero_or_null <- function (list){
 
 }
 
-
-#' @title Check date
-#'
-#' @param date a date entry for check
-#'
-#' @return a date that has been checked
-check_date <- function(date) {
-  date <- suppressWarnings(lubridate::ymd(date))
-
-  tryCatch(
-    assertthat::assert_that(!is.na(date)),
-    error = function(e) {
-      stop("Wrong date format. Try 'YYYY-MM-DD'")
-    }
-  )
-
-  if(!is.character(date)){
-    date <- as.character(date)
-  }
-
-  date
-}
