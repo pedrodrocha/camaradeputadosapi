@@ -22,9 +22,8 @@ check_date <- function(date) {
 
 #' @title Check official API parameters
 #'
-#' @param param API parameters
-#'
-#'
+#' @param param API parameters name
+#' @param query_list API parameters list
 check_api_parameters <- function(param, query_list) {
 
   if (is.element("dataInicio",param)) {

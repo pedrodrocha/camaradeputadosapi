@@ -21,7 +21,7 @@ If query parameters from the API such as 'dataInicio', 'dataFim' or 'idLegislatu
 For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
 }
 \examples{
-a <- deputados_discursos(id = deputados_id("Rodrigo Maia"), "2020-01-01")
+a <- deputados_discursos(id = deputados_id("Rodrigo Maia"), dataInicio = "2020-01-01")
 }
 \seealso{
 Other deputados: 

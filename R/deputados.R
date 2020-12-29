@@ -205,7 +205,7 @@ deputados_despesas <- function(id, year, ...) {
 #' @export
 #' @family deputados
 #' @examples
-#' a <- deputados_discursos(id = deputados_id("Rodrigo Maia"), "2020-01-01")
+#' a <- deputados_discursos(id = deputados_id("Rodrigo Maia"), dataInicio = "2020-01-01")
 deputados_discursos <- function(id, ...) {
 
   assertthat::assert_that(!missing(id),msg = "'id' is missing")

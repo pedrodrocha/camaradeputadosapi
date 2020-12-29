@@ -7,7 +7,9 @@
 check_api_parameters(param, query_list)
 }
 \arguments{
-\item{param}{API parameters}
+\item{param}{API parameters name}
+
+\item{query_list}{API parameters list}
 }
 \description{
 Check official API parameters
