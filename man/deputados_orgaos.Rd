@@ -20,7 +20,7 @@ If query parameters from the API such as 'dataInicio' or 'dataFim' are not used,
 For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
 }
 \examples{
-a <- deputados_orgaos(deputados_id("Alessandro Molon"))
+a <- deputados_orgaos(160511)
 }
 \seealso{
 Other deputados: 

@@ -4,20 +4,20 @@
 \alias{frentes}
 \title{Get a list of parliamentary fronts}
 \usage{
-frentes(...)
+frentes(idLegislatura)
 }
 \arguments{
-\item{...}{query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
+\item{idLegislatura}{An unique identifier for one or more legislative periods. You can search for those with \code{\link{legislaturas_id}}}
 }
 \value{
 A tibble of parliamentary fronts
 }
 \description{
-Get a list of parliamentary fronts
+Get a list of parliamentary fronts from the Brazilian House of representatives API that were created after 2003.
+A parliamentary front exist until the end of the legislative period in which it was created.
 }
 \examples{
-a <- frentes()
-b <- frentes(idLegislatura = 54)
+a <- frentes(idLegislatura = 56)
 }
 \seealso{
 Other frentes: 

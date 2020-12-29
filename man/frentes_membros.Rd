@@ -7,16 +7,16 @@
 frentes_membros(id)
 }
 \arguments{
-\item{id}{A parliamentary front identifier}
+\item{id}{An unique identifier for a parliamentary front}
 }
 \value{
 A tibble of members for a given parliamentary front
 }
 \description{
-Get a list of members for a given parliamentary front
+Get a list of members for a given parliamentary front and what position each member hold.
 }
 \examples{
-a <- frentes_membros(frentes_id("fortalecimento do sus"))
+a <- frentes_membros(id = 54257)
 }
 \seealso{
 Other frentes: 

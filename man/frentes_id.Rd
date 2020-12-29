@@ -4,10 +4,12 @@
 \alias{frentes_id}
 \title{Extract a parliamentary front Id}
 \usage{
-frentes_id(nome)
+frentes_id(nome, idLegislatura)
 }
 \arguments{
-\item{nome}{A name or part of a name from a parliamentary front}
+\item{nome}{A name or part of a name from a parliamentary front.}
+
+\item{idLegislatura}{An unique identifier for a legislative period. You can search for it using \code{\link{legislaturas_id}}}
 }
 \value{
 A parliamentary front id
@@ -16,7 +18,7 @@ A parliamentary front id
 Extract a parliamentary front Id
 }
 \examples{
-a <- frentes_id("fortalecimento do sus")
+a <- frentes_id(nome = "fortalecimento do sus", idLegislatura = 56)
 }
 \seealso{
 Other frentes: 

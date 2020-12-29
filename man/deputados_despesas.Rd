@@ -21,10 +21,10 @@ Provides access to payments and reimbursements made by the House of Representati
 For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
 }
 \examples{
-a <- deputados_despesas(id = deputados_id(name = "Eduardo Cunha"), 2013)
+a <- deputados_despesas(id = 74173, 2013)
 \donttest{
 b <- deputados_despesas(
-id = deputados_id(name = "Eduardo Cunha"),
+id = 74173,
 year = 2013,
 cnpjCpfFornecedor = "06278433000190"
 )

@@ -1,24 +1,29 @@
 #' @title Get a list of parliamentary fronts
 #'
-#' @param ... query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
+#' @description
+#'
+#' Get a list of parliamentary fronts from the Brazilian House of representatives API that were created after 2003.
+#' A parliamentary front exist until the end of the legislative period in which it was created.
+#'
+#' @param idLegislatura An unique identifier for one or more legislative periods. You can search for those with \code{\link{legislaturas_id}}
 #'
 #' @return A tibble of parliamentary fronts
 #' @export
 #' @family frentes
 #'
 #' @examples
-#' a <- frentes()
-#' b <- frentes(idLegislatura = 54)
-frentes <- function(...) {
-  query_list <- list(...)
+#' a <- frentes(idLegislatura = 56)
+frentes <- function(idLegislatura) {
+
+  assertthat::assert_that(!missing(idLegislatura),msg = "'idLegislatura' is missing")
+  idLegislatura <- paste0(idLegislatura,collapse = ",")
+
+  query_list <- list(idLegislatura = idLegislatura)
 
   req <- main_api("frentes",query_list)
 
   content <- req$dados
-
-  if (length(content) == 0) {
-    warning("There is no data for this entry.", call. = FALSE)
-  }
+  not_zero_content(content)
 
   if ("uri" %in% names(content)) {
     tibble::as_tibble(content) %>%
@@ -32,18 +37,21 @@ frentes <- function(...) {
 
 #' @title Extract a parliamentary front Id
 #'
-#' @param nome A name or part of a name from a parliamentary front
+#' @param nome A name or part of a name from a parliamentary front.
+#' @param idLegislatura An unique identifier for a legislative period. You can search for it using \code{\link{legislaturas_id}}
 #'
 #' @return A parliamentary front id
 #' @export
 #' @family frentes
 #' @examples
-#' a <- frentes_id("fortalecimento do sus")
-frentes_id <- function(nome){
+#' a <- frentes_id(nome = "fortalecimento do sus", idLegislatura = 56)
+frentes_id <- function(nome, idLegislatura){
+  assertthat::assert_that(!missing(idLegislatura),msg = "'idLegislatura' is missing")
+  assertthat::assert_that(!missing(nome),msg = "'nome' is missing")
 
   nome <- stringr::str_to_lower(nome)
 
-  content <- frentes() %>%
+  content <- frentes(idLegislatura) %>%
     dplyr::mutate(titulo = stringr::str_to_lower(titulo))
 
   content %>%
@@ -67,24 +75,32 @@ frentes_id <- function(nome){
 
 #' @title Get general information about a parliamentary front
 #'
-#' @param id Parliamentary front identifier
+#' @description
+#' Get general information about a parliamentary front identified by an unique id
+#'
+#' @param id An unique identifier for a parliamentary front
 #'
 #' @return A tibble with information about a parliamentary front
 #' @export
 #' @family frentes
 #'
 #' @examples
-#' a <- frentes_info(id = frentes_id("fortalecimento do sus"))
+#' a <- frentes_info(id = 54257)
 frentes_info <- function(id) {
+  assertthat::assert_that(!missing(id),msg = "'id' is missing")
   if (is.numeric(id)) {
     id <- as.character(id)
   }
-
-
   path <- paste0("frentes/",id)
-  req <- main_api(path)
+  req <- tryCatch(
+    main_api(path),
+    error = function(e) {
+      stop("404 not found. Couldn't find a parliamentary front for the id '",id,"'", call. = FALSE)
+    }
+  )
 
   content <- req$dados
+  not_zero_content(content)
 
   content <- zero_or_null(content)
 
@@ -94,11 +110,6 @@ frentes_info <- function(id) {
 
   content$coordenador <- NULL
   content <- tibble::as_tibble(content)
-
-  if (length(content) == 0) {
-    warning("There is no data for this entry.", call. = FALSE)
-
-  }
 
   tibble::as_tibble(coordenador) %>%
     dplyr::select(-c(uri, uriPartido)) %>%
@@ -122,29 +133,33 @@ frentes_info <- function(id) {
 
 #' @title Get a list of members for a given parliamentary front
 #'
-#' @param id A parliamentary front identifier
+#' @description
+#' Get a list of members for a given parliamentary front and what position each member hold.
+#'
+#' @param id An unique identifier for a parliamentary front
 #'
 #' @return A tibble of members for a given parliamentary front
 #' @export
 #' @family frentes
 #' @examples
-#' a <- frentes_membros(frentes_id("fortalecimento do sus"))
+#' a <- frentes_membros(id = 54257)
 frentes_membros <- function(id) {
+  assertthat::assert_that(!missing(id),msg = "'id' is missing")
   if (is.numeric(id)) {
     id <- as.character(id)
   }
 
 
   path <- paste0("frentes/",id, "/membros")
-  req <- main_api(path)
+  req <- tryCatch(
+    main_api(path),
+    error = function(e) {
+      stop("404 not found. Couldn't find a parliamentary front for the id '",id,"'", call. = FALSE)
+    }
+  )
 
   content <- req$dados
-
-  if (length(content) == 0) {
-
-    warning("There is no data for this entry.", call. = FALSE)
-
-  }
+  not_zero_content(content)
 
 
   if ("uri" %in% names(content)) {

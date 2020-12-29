@@ -27,7 +27,7 @@ For further parameters please check the official API website (\href{https://dado
 a <- deputados_eventos(id = 74646, from = "2020-11-01", to = "2020-12-01")
 \donttest{
 b <- deputados_eventos(
-id = deputados_id("Patrus Ananias"),
+id = 74160,
 from = "2014-01-01",
 to = "2020-12-01"
 )

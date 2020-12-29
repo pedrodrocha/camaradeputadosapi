@@ -16,7 +16,7 @@ A tibble of parliamentary  fronts a representative is currently member or was a 
 Get a list o basic information about parliamentary fronts a representative is currently member or was a member at the end of legislative period.
 }
 \examples{
-a <- deputados_frentes(id = deputados_id("Marcelo Freixo"))
+a <- deputados_frentes(id = 76874)
 }
 \seealso{
 Other deputados: 

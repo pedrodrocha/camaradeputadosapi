@@ -150,10 +150,10 @@ deputados_info <- function(id) {
 #' @export
 #' @family deputados
 #' @examples
-#' a <- deputados_despesas(id = deputados_id(name = "Eduardo Cunha"), 2013)
+#' a <- deputados_despesas(id = 74173, 2013)
 #' \donttest{
 #' b <- deputados_despesas(
-#' id = deputados_id(name = "Eduardo Cunha"),
+#' id = 74173,
 #' year = 2013,
 #' cnpjCpfFornecedor = "06278433000190"
 #' )
@@ -214,9 +214,9 @@ deputados_despesas <- function(id, year, ...) {
 #' @export
 #' @family deputados
 #' @examples
-#' a <- deputados_discursos(id = deputados_id("Rodrigo Maia"), dataInicio = "2020-12-01")
+#' a <- deputados_discursos(id = 74693, dataInicio = "2020-12-01")
 #' \donttest{
-#' b <- deputados_discursos(id = deputados_id("Rodrigo Maia"), idLegislatura = '55', itens = 100)
+#' b <- deputados_discursos(id = 74693, idLegislatura = '55', itens = 100)
 #' }
 deputados_discursos <- function(id, ...) {
 
@@ -272,7 +272,7 @@ deputados_discursos <- function(id, ...) {
 #' a <- deputados_eventos(id = 74646, from = "2020-11-01", to = "2020-12-01")
 #' \donttest{
 #' b <- deputados_eventos(
-#' id = deputados_id("Patrus Ananias"),
+#' id = 74160,
 #' from = "2014-01-01",
 #' to = "2020-12-01"
 #' )
@@ -333,7 +333,7 @@ deputados_eventos <- function(id, from, to, ...) {
 #' @export
 #' @family deputados
 #' @examples
-#' a <- deputados_frentes(id = deputados_id("Marcelo Freixo"))
+#' a <- deputados_frentes(id = 76874)
 deputados_frentes <- function(id) {
 
   assertthat::assert_that(!missing(id),msg = "'id' is missing")
@@ -376,7 +376,7 @@ deputados_frentes <- function(id) {
 #' @export
 #' @family deputados
 #' @examples
-#' a <- deputados_orgaos(deputados_id("Alessandro Molon"))
+#' a <- deputados_orgaos(160511)
 deputados_orgaos <- function(id,...){
 
   assertthat::assert_that(!missing(id),msg = "'id' is missing")
