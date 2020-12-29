@@ -7,15 +7,17 @@
 deputados_orgaos(id, ...)
 }
 \arguments{
-\item{id}{the representative id}
+\item{id}{An unique identifier for a given representative}
 
-\item{...}{query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
+\item{...}{Query parameters for the Brazilian House of Representatives API}
 }
 \value{
-a tibble with bodies and commissions a representative is member
+A tibble with bodies and commissions a representative is member
 }
 \description{
-Get a list of bodies and commissions a representative is member
+Get a list of bodies and commissions a representative is currently member or was a member in a given period o time.
+If query parameters from the API such as 'dataInicio' or 'dataFim' are not used, it will return only bodies or commissions a representative is currently member.
+For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
 }
 \examples{
 a <- deputados_orgaos(deputados_id("Alessandro Molon"))

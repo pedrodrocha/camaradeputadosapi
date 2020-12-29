@@ -9,7 +9,7 @@ deputados_discursos(id, ...)
 \arguments{
 \item{id}{An unique identifier for a given representative}
 
-\item{...}{query parameters for the Brazilian House of Representatives API}
+\item{...}{Query parameters for the Brazilian House of Representatives API}
 }
 \value{
 a tibble with speeches from the representative
@@ -21,7 +21,10 @@ If query parameters from the API such as 'dataInicio', 'dataFim' or 'idLegislatu
 For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
 }
 \examples{
-a <- deputados_discursos(id = deputados_id("Rodrigo Maia"), dataInicio = "2020-01-01")
+a <- deputados_discursos(id = deputados_id("Rodrigo Maia"), dataInicio = "2020-12-01")
+\donttest{
+b <- deputados_discursos(id = deputados_id("Rodrigo Maia"), idLegislatura = '55', itens = 100)
+}
 }
 \seealso{
 Other deputados: 

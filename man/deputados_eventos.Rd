@@ -9,11 +9,11 @@ deputados_eventos(id, from, to, ...)
 \arguments{
 \item{id}{An unique identifier for a given representative}
 
-\item{from}{the beginning date (YYYY-MM-DD) you want to collect events}
+\item{from}{The beginning date (YYYY-MM-DD) you want to collect events}
 
-\item{to}{the end date (YYYY-MM-DD) you want to collect events}
+\item{to}{The end date (YYYY-MM-DD) you want to collect events}
 
-\item{...}{query parameters for the Brazilian House of Representatives API}
+\item{...}{Query parameters for the Brazilian House of Representatives API}
 }
 \value{
 A tibble with events a representative was present
@@ -24,7 +24,14 @@ By default it returns 15 results per request with a max limit of 100 results. Yo
 For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
 }
 \examples{
-deputados_eventos(id = 74646, from = "2020-11-01", to = "2020-12-01")
+a <- deputados_eventos(id = 74646, from = "2020-11-01", to = "2020-12-01")
+\donttest{
+b <- deputados_eventos(
+id = deputados_id("Patrus Ananias"),
+from = "2014-01-01",
+to = "2020-12-01"
+)
+}
 }
 \seealso{
 Other deputados: 

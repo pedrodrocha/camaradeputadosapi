@@ -2,20 +2,18 @@
 % Please edit documentation in R/deputados.R
 \name{deputados_frentes}
 \alias{deputados_frentes}
-\title{Get a list of parliamentary  fronts a representative is currently member}
+\title{Get a list of parliamentary fronts for a representative}
 \usage{
-deputados_frentes(id, ...)
+deputados_frentes(id)
 }
 \arguments{
-\item{id}{representative id}
-
-\item{...}{query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
+\item{id}{An unique identifier for a given representative}
 }
 \value{
-a tibble of parliamentary  fronts a representative is currently member
+A tibble of parliamentary  fronts a representative is currently member or was a member at the end of a legislative period
 }
 \description{
-Get a list of parliamentary  fronts a representative is currently member
+Get a list o basic information about parliamentary fronts a representative is currently member or was a member at the end of legislative period.
 }
 \examples{
 a <- deputados_frentes(id = deputados_id("Marcelo Freixo"))

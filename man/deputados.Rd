@@ -7,7 +7,7 @@
 deputados(...)
 }
 \arguments{
-\item{...}{query parameters for the Brazilian House of Representatives API}
+\item{...}{Query parameters for the Brazilian House of Representatives API}
 }
 \value{
 A tibble with a list of representatives
@@ -19,8 +19,10 @@ For further parameters please check the official API website (\href{https://dado
 }
 \examples{
 a <- deputados()
+\donttest{
 b <- deputados(siglaUF = "MG")
 c <- deputados(siglaUF = "MG", siglaPartido = "PT")
+}
 }
 \seealso{
 Other deputados: 

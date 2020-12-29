@@ -62,6 +62,30 @@ check_api_parameters <- function(param, query_list) {
 
   }
 
+  if (is.element("cnpjCpfFornecedor", param)){
+
+    value <- unlist(query_list['cnpjCpfFornecedor'])
+
+    tryCatch(
+      assertthat::assert_that(is.character(value)),
+      error = function(e) {
+        stop("'cnpjCpfFornecedor' should be a character vector", call. = FALSE)
+      }
+    )
+  }
+
+  if (is.element("idLegislatura", param)){
+
+    value <- unlist(query_list['idLegislatura'])
+
+    tryCatch(
+      assertthat::assert_that(is.character(value)),
+      error = function(e) {
+        stop("'idLegislatura' should be a character vector", call. = FALSE)
+      }
+    )
+  }
+
 }
 
 #' @title Check for contents of length 0
@@ -91,3 +115,5 @@ max_limit100 <- function(param, query_list) {
   }
 
 }
+
+

@@ -17,3 +17,4 @@ zero_or_null <- function (list){
 
 }
 
+

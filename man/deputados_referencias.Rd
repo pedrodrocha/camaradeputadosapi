@@ -7,13 +7,13 @@
 deputados_referencias(meta = c("siglaUF", "siglaSituacao"))
 }
 \arguments{
-\item{meta}{tables of metadata for querying}
+\item{meta}{Tables of metadata for querying}
 }
 \value{
 A list of tibbles with metadata information on data related to the family 'deputados'
 }
 \description{
-Get metadata information on data related to 'deputados'
+Get metadata information of data related to deputados. Two types of metadata is available: a) 'siglaUF', with a list of Brazilian states; b) 'siglaSituacao', with a list of status for representatives.
 }
 \examples{
 a <- deputados_referencias()
