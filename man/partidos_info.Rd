@@ -7,16 +7,16 @@
 partidos_info(id)
 }
 \arguments{
-\item{id}{A Brazilian political party id}
+\item{id}{A Brazilian political party unique identifier}
 }
 \value{
 A tibble with information about a Brazilian political party
 }
 \description{
-Get information about a Brazilian political party
+Get information about a given Brazilian political party
 }
 \examples{
-a <- partidos_info(partidos_id("PT"))
+a <- partidos_info(id = 36844)
 }
 \seealso{
 Other partidos: 

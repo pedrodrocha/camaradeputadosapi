@@ -2,7 +2,7 @@
 % Please edit documentation in R/partidos.R
 \name{partidos_blocos}
 \alias{partidos_blocos}
-\title{Get a list of blocs in the current legislative term at the Brazilian House of Representatives}
+\title{Get a list of blocs at the Brazilian House of Representatives}
 \usage{
 partidos_blocos()
 }
@@ -10,7 +10,7 @@ partidos_blocos()
 A tibble of blocs in the current legislative term at the Brazilian House of Representatives
 }
 \description{
-Get a list of blocs in the current legislative term at the Brazilian House of Representatives
+Get a list of blocs of political parties in the current legislative period at the Brazilian House of Representatives
 }
 \examples{
 partidos_blocos()

@@ -7,19 +7,20 @@
 partidos_membros(id, ...)
 }
 \arguments{
-\item{id}{A Brazilian political party Id}
+\item{id}{A Brazilian political party unique identifier}
 
-\item{...}{query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
+\item{...}{Further query parameters from the Brazilian House of Representatives API}
 }
 \value{
 A tibble  of representatives in office for a given Brazilian political party
 }
 \description{
-Get a list of representatives that are or were in office for a given Brazilian political party
+Get a list of representatives that are or were in office for a given political party during a legislative period.
+If query parameters from the API such as 'dataInicio', 'dataFim' and 'idLegislatura' are not used, it will return representatives for the currently legislative period.
+For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
 }
 \examples{
-a <- partidos_membros(id = 36844, itens = 100)
-b <- partidos_membros(id = 36844, itens = 100, idLegislatura = 54)
+a <- partidos_membros(id = 36844)
 }
 \seealso{
 Other partidos: 

@@ -2,22 +2,23 @@
 % Please edit documentation in R/partidos.R
 \name{partidos}
 \alias{partidos}
-\title{Get a list of political parties that had or current have representatives in office}
+\title{Get a list of political parties}
 \usage{
 partidos(...)
 }
 \arguments{
-\item{...}{query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
+\item{...}{Further query parameters from the House of Representatives API}
 }
 \value{
-A tibble with political parties that had or current have representatives in office
+A tibble with political parties
 }
 \description{
-Get a list of political parties that had or current have representatives in office
+Get a list of political parties that had or currently have representatives at the Brazilian House of Representatives.
+If query parameters from the API such as 'dataInicio', 'dataFim' and 'idLegislatura' are not used, it will return only parties that currently have a representative.
+For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
 }
 \examples{
-a <- partidos()
-b <- partidos(itens = 100, idLegislatura = 55)
+a <- partidos(idLegislatura = "56")
 }
 \seealso{
 Other partidos: 
