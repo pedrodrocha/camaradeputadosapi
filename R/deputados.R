@@ -412,7 +412,7 @@ deputados_orgaos <- function(id,...){
 #'
 #' @description
 #'
-#' Get metadata information of data related to deputados. Two types of metadata is available: a) 'siglaUF', with a list of Brazilian states; b) 'siglaSituacao', with a list of status for representatives.
+#' Get metadata information of data related to 'deputados'. Two types of metadata are available: a) 'siglaUF', with a list of Brazilian states; b) 'siglaSituacao', with a list of status for representatives.
 #'
 #' @param meta Tables of metadata for querying
 #'

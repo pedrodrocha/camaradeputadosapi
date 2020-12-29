@@ -1,24 +1,29 @@
 #' @title Get a list of events that occurred or are on schedule at the House of Representatives
 #'
-#' @param ... query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
+#' @description
+#' Get a list of events that occurred or are on schedule at the Brazilian House of Representatives.
+#' If query parameters from the API such as 'dataInicio' or 'dataFim' are not used, it will return events that took place or are scheduled to occur five days before and after the query.
+#' For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
 #'
-#' @return A tibble  of events that occurred or are on schedule at the House of Representatives
+#' @param ... Query parameters for the Brazilian House of Representatives API
+#'
+#' @return A tibble of events that occurred or are on schedule at the Brazilian House of Representatives
 #' @export
 #' @family eventos
 #' @examples
-#' a <- eventos()
-#' b <- eventos(dataInicio = "2020-01-01")
+#' a <- eventos(dataInicio = "2020-12-01", dataFim = "2020-12-01")
 eventos <- function(...){
 
   query_list <- list(...)
 
+  check_api_parameters(names(query_list),query_list)
+
   req <- main_api("eventos",query_list)
 
   content <- req$dados
+  not_zero_content(content)
 
-  if (length(content) == 0) {
-    warning("There is no data for this entry", call. = FALSE)
-  }
+
 
   if ("uri" %in% names(content)) {
     tibble::as_tibble(content) %>%
@@ -31,25 +36,37 @@ eventos <- function(...){
 }
 
 
-#' @title Get detailed information about a specific event
+#' @title Get information about a specific event
 #'
-#' @param id An event identifier
+#' @description
+#' Get detailed information on a event from the Brazilian House of Representatives.
+#' You can look for events running \code{\link{eventos}}.
+#'
+#' @param id An unique identifier for an event
 #'
 #' @return A tibble with detailed information about a specific event
 #' @export
 #' @family eventos
 #' @examples
-#' a <- eventos_info("59272")
+#' a <- eventos_info(id = "59272")
 eventos_info <- function(id) {
 
+  assertthat::assert_that(!missing(id),msg = "'id' is missing")
   if (is.numeric(id)) {
     id <- as.character(id)
   }
 
   path <- paste0("eventos/", id)
-  req <- main_api(path)
+  req <- tryCatch(
+    main_api(path),
+    error = function(e) {
+      stop("404 not found. Couldn't find an event for the id '",id,"'", call. = FALSE)
+    }
+  )
 
   content <- req$dados
+
+  not_zero_content(content)
 
   content <- zero_or_null(content)
 
@@ -67,11 +84,6 @@ eventos_info <- function(id) {
     ) %>%
     dplyr::bind_cols(content,.) -> content
 
-  if (length(content) == 0) {
-
-    warning("There is no data for this entry.", call. = FALSE)
-
-  }
 
   if ("uri" %in% names(content)) {
     content %>%
@@ -83,30 +95,38 @@ eventos_info <- function(id) {
 
 }
 
-#' @title Get a list of representatives that were in a specific event
+#' @title Get a list of representatives that attended a specific event
 #'
-#' @param id An event identifier
+#' @description
 #'
-#' @return A tibble of representatives that were in a specific event
+#' Get a list of representatives that attended a specific event. You can look for events running \code{\link{eventos}}.
+#' If the event already took place the list identifies representatives that actually attended.
+#' If the event is on schedule the list identifies representatives that have the event on their agenda.
+#'
+#' @param id An unique identifier for an event
+#'
+#' @return A tibble of representatives that attended a specific event
 #' @export
 #' @family eventos
 #' @examples
 #' a <- eventos_deputados(id = 60027)
 eventos_deputados <- function(id) {
+
+  assertthat::assert_that(!missing(id),msg = "'id' is missing")
   if (is.numeric(id)) {
     id <- as.character(id)
   }
 
   path <- paste0("eventos/", id, "/deputados")
-  req <- main_api(path)
+  req <- tryCatch(
+    main_api(path),
+    error = function(e) {
+      stop("404 not found. Couldn't find an event for the id '",id,"'", call. = FALSE)
+    }
+  )
 
   content <- req$dados
-
-  if (length(content) == 0) {
-
-    warning("There is no data for this entry.", call. = FALSE)
-
-  }
+  not_zero_content(content)
 
   if ("uri" %in% names(content)) {
     tibble::as_tibble(content) %>%
@@ -120,7 +140,11 @@ eventos_deputados <- function(id) {
 
 #' @title Get a list of bodies, commissions, agencies, etc. that organized an event
 #'
-#' @param id An event identifier
+#' @description
+#'  Get a list of bodies, commissions, agencies, etc. that organized an event.
+#'  You can look for events running \code{\link{eventos}}.
+#'
+#' @param id An unique identifier for an event
 #'
 #' @return A tibble of bodies, commissions, agencies, etc. that organized an event
 #' @export
@@ -129,20 +153,22 @@ eventos_deputados <- function(id) {
 #' a <- eventos_orgaos(id = 60222)
 eventos_orgaos <- function(id){
 
+  assertthat::assert_that(!missing(id),msg = "'id' is missing")
   if (is.numeric(id)) {
     id <- as.character(id)
   }
 
   path <- paste0("eventos/", id, "/orgaos")
-  req <- main_api(path)
+  req <- tryCatch(
+    main_api(path),
+    error = function(e) {
+      stop("404 not found. Couldn't find an event for the id '",id,"'", call. = FALSE)
+    }
+  )
 
   content <- req$dados
+  not_zero_content(content)
 
-  if (length(content) == 0) {
-
-    warning("There is no data for this entry.", call. = FALSE)
-
-  }
 
   if ("uri" %in% names(content)) {
     tibble::as_tibble(content) %>%
@@ -154,33 +180,37 @@ eventos_orgaos <- function(id){
 
 }
 
-#' @title Get a list of propositions that were or will be discussed in a given event
+#' @title Get a list of propositions that were or will be discussed in an event
 #'
-#' @param id An event identifier
+#' @description
+#' If the event is a deliberative event, get a list of propositions that were discussed or are scheduled to be discussed at that event.
+#' You can look for events running \code{\link{eventos}}.
 #'
-#' @return A tibble of propositions that were or will be discussed in a given event
+#' @param id An unique identifier for an event
+#'
+#' @return A tibble of propositions
 #' @export
 #' @family eventos
 #' @examples
 #' a <- eventos_pauta(id = 60027)
 eventos_pauta <- function(id) {
+  assertthat::assert_that(!missing(id),msg = "'id' is missing")
   if (is.numeric(id)) {
     id <- as.character(id)
   }
 
   path <- paste0("eventos/", id, "/pauta")
-  req <- main_api(path)
+  req <- tryCatch(
+    main_api(path),
+    error = function(e) {
+      stop("404 not found. Couldn't find an event for the id '",id,"'", call. = FALSE)
+    }
+  )
 
   content <- req$dados
 
   content <- zero_or_null(content)
-
-
-  if (length(content) == 0) {
-
-    warning("There is no data for this entry.", call. = FALSE)
-
-  }
+  not_zero_content(content)
 
   if ("uriVotacao" %in% names(content)) {
     tibble::as_tibble(content) %>%
@@ -191,33 +221,40 @@ eventos_pauta <- function(id) {
   }
 }
 
-#' @title Get information for a voting event
+#' @title Get information for voting processes in an event
 #'
-#' @param id An event identifier
+#' @description
 #'
-#' @return A tibble with information for a voting event
+#' Get basic information on votings that occured in an event. Note that votings only occur on deliberative events.
+#' You can look for events running \code{\link{eventos}}.
+#' More information about voting processes can be obtained with \code{\link{votacoes_info}}.
+#'
+#' @param id An unique identifier for an event
+#'
+#' @return A tibble with information for voting processes in an event
 #' @export
 #' @family eventos
 #'
 #' @examples
 #' a <- eventos_votacoes(id = 60241)
 eventos_votacoes <- function(id) {
+  assertthat::assert_that(!missing(id),msg = "'id' is missing")
   if (is.numeric(id)) {
     id <- as.character(id)
   }
 
   path <- paste0("eventos/", id, "/votacoes")
-  req <- main_api(path)
+  req <- tryCatch(
+    main_api(path),
+    error = function(e) {
+      stop("404 not found. Couldn't find an event for the id '",id,"'", call. = FALSE)
+    }
+  )
 
   content <- req$dados
 
   content <- zero_or_null(content)
-
-  if (length(content) == 0) {
-
-    warning("There is no data for this entry.", call. = FALSE)
-
-  }
+  not_zero_content(content)
 
   if ("uri" %in% names(content)) {
     tibble::as_tibble(content) %>%
@@ -230,6 +267,10 @@ eventos_votacoes <- function(id) {
 
 
 #' @title Get metadata information on data related to 'eventos'
+#'
+#' @description
+#'
+#' Get metadata information of data related to 'eventos'. Two types of metadata are available: a) 'codTipoEvento', with a list of event types; b) 'siglaSituacao', with a list of status for events.
 #'
 #' @param meta tables of metadata for querying
 #'
@@ -252,6 +293,7 @@ eventos_referencias <- function(meta = c("codTipoEvento","codSituacao")) {
   req <- main_api(path = path)
 
   content <- req$dados
+  not_zero_content(content)
 
   content$codTipoEvento <- tibble::as_tibble(content$codTipoEvento)
   content$codSituacao <- tibble::as_tibble(content$codSituacao)

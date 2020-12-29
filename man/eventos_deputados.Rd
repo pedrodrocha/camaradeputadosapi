@@ -2,18 +2,20 @@
 % Please edit documentation in R/eventos.R
 \name{eventos_deputados}
 \alias{eventos_deputados}
-\title{Get a list of representatives that were in a specific event}
+\title{Get a list of representatives that attended a specific event}
 \usage{
 eventos_deputados(id)
 }
 \arguments{
-\item{id}{An event identifier}
+\item{id}{An unique identifier for an event}
 }
 \value{
-A tibble of representatives that were in a specific event
+A tibble of representatives that attended a specific event
 }
 \description{
-Get a list of representatives that were in a specific event
+Get a list of representatives that attended a specific event. You can look for events running \code{\link{eventos}}.
+If the event already took place the list identifies representatives that actually attended.
+If the event is on schedule the list identifies representatives that have the event on their agenda.
 }
 \examples{
 a <- eventos_deputados(id = 60027)

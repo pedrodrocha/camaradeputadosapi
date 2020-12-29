@@ -7,17 +7,18 @@
 eventos(...)
 }
 \arguments{
-\item{...}{query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
+\item{...}{Query parameters for the Brazilian House of Representatives API}
 }
 \value{
-A tibble  of events that occurred or are on schedule at the House of Representatives
+A tibble of events that occurred or are on schedule at the Brazilian House of Representatives
 }
 \description{
-Get a list of events that occurred or are on schedule at the House of Representatives
+Get a list of events that occurred or are on schedule at the Brazilian House of Representatives.
+If query parameters from the API such as 'dataInicio' or 'dataFim' are not used, it will return events that took place or are scheduled to occur five days before and after the query.
+For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
 }
 \examples{
-a <- eventos()
-b <- eventos(dataInicio = "2020-01-01")
+a <- eventos(dataInicio = "2020-12-01", dataFim = "2020-12-01")
 }
 \seealso{
 Other eventos: 

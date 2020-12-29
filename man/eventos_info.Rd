@@ -2,21 +2,22 @@
 % Please edit documentation in R/eventos.R
 \name{eventos_info}
 \alias{eventos_info}
-\title{Get detailed information about a specific event}
+\title{Get information about a specific event}
 \usage{
 eventos_info(id)
 }
 \arguments{
-\item{id}{An event identifier}
+\item{id}{An unique identifier for an event}
 }
 \value{
 A tibble with detailed information about a specific event
 }
 \description{
-Get detailed information about a specific event
+Get detailed information on a event from the Brazilian House of Representatives.
+You can look for events running \code{\link{eventos}}.
 }
 \examples{
-a <- eventos_info("59272")
+a <- eventos_info(id = "59272")
 }
 \seealso{
 Other eventos: 

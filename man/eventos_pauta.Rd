@@ -2,18 +2,19 @@
 % Please edit documentation in R/eventos.R
 \name{eventos_pauta}
 \alias{eventos_pauta}
-\title{Get a list of propositions that were or will be discussed in a given event}
+\title{Get a list of propositions that were or will be discussed in an event}
 \usage{
 eventos_pauta(id)
 }
 \arguments{
-\item{id}{An event identifier}
+\item{id}{An unique identifier for an event}
 }
 \value{
-A tibble of propositions that were or will be discussed in a given event
+A tibble of propositions
 }
 \description{
-Get a list of propositions that were or will be discussed in a given event
+If the event is a deliberative event, get a list of propositions that were discussed or are scheduled to be discussed at that event.
+You can look for events running \code{\link{eventos}}.
 }
 \examples{
 a <- eventos_pauta(id = 60027)

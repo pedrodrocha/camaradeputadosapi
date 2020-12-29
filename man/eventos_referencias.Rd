@@ -13,7 +13,7 @@ eventos_referencias(meta = c("codTipoEvento", "codSituacao"))
 A list of tibbles with metadata information on data related to the family 'eventos'
 }
 \description{
-Get metadata information on data related to 'eventos'
+Get metadata information of data related to 'eventos'. Two types of metadata are available: a) 'codTipoEvento', with a list of event types; b) 'siglaSituacao', with a list of status for events.
 }
 \examples{
 a <- eventos_referencias()

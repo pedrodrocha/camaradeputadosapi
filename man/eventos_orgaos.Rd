@@ -7,13 +7,14 @@
 eventos_orgaos(id)
 }
 \arguments{
-\item{id}{An event identifier}
+\item{id}{An unique identifier for an event}
 }
 \value{
 A tibble of bodies, commissions, agencies, etc. that organized an event
 }
 \description{
-Get a list of bodies, commissions, agencies, etc. that organized an event
+Get a list of bodies, commissions, agencies, etc. that organized an event.
+ You can look for events running \code{\link{eventos}}.
 }
 \examples{
 a <- eventos_orgaos(id = 60222)

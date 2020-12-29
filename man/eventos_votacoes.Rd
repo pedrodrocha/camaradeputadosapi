@@ -2,18 +2,20 @@
 % Please edit documentation in R/eventos.R
 \name{eventos_votacoes}
 \alias{eventos_votacoes}
-\title{Get information for a voting event}
+\title{Get information for voting processes in an event}
 \usage{
 eventos_votacoes(id)
 }
 \arguments{
-\item{id}{An event identifier}
+\item{id}{An unique identifier for an event}
 }
 \value{
-A tibble with information for a voting event
+A tibble with information for voting processes in an event
 }
 \description{
-Get information for a voting event
+Get basic information on votings that occured in an event. Note that votings only occur on deliberative events.
+You can look for events running \code{\link{eventos}}.
+More information about voting processes can be obtained with \code{\link{votacoes_info}}.
 }
 \examples{
 a <- eventos_votacoes(id = 60241)

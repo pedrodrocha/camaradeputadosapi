@@ -7,6 +7,7 @@ Description: The goal of camaradeputadosapi is to ease access and provide a
     open data RESTful API. It offers nine families of functions for fetching 
     each type of data provided by the API.
 License: MIT + file LICENSE
+URL: https://github.com/pedrodrocha/camaradeputadosapi
 Encoding: UTF-8
 LazyData: true
 Imports: 
