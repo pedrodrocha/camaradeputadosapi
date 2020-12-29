@@ -2,20 +2,19 @@
 % Please edit documentation in R/legislaturas.R
 \name{legislaturas_mesa}
 \alias{legislaturas_mesa}
-\title{Get information of speakers for the House of Representative for a given legislative period}
+\title{Get information on speakers of the House of Representative for a given legislative period}
 \usage{
-legislaturas_mesa(id, ...)
+legislaturas_mesa(id)
 }
 \arguments{
-\item{id}{legislative period id}
-
-\item{...}{query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
+\item{id}{An unique identifier for a legislative period}
 }
 \value{
-A tibble with speakers for the House of Representative for a given legislative period
+A tibble with speakers of the House of Representative for a given legislative period
 }
 \description{
-Get information of speakers for the House of Representative for a given legislative period
+Get information on speakers of the House of Representatives for a given legislative period.
+Usually each legislative period have two groups of speakers.
 }
 \examples{
 a <- legislaturas_mesa(id = 55)
@@ -23,7 +22,6 @@ a <- legislaturas_mesa(id = 55)
 \seealso{
 Other legislaturas: 
 \code{\link{legislaturas_id}()},
-\code{\link{legislaturas_info}()},
 \code{\link{legislaturas}()}
 }
 \concept{legislaturas}

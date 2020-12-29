@@ -2,18 +2,18 @@
 % Please edit documentation in R/legislaturas.R
 \name{legislaturas}
 \alias{legislaturas}
-\title{GET a list of legislative periods}
+\title{Get a list of legislative periods}
 \usage{
 legislaturas(...)
 }
 \arguments{
-\item{...}{query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
+\item{...}{Query parameters for the Brazilian House of Representatives API}
 }
 \value{
 A tibble with a list of legislative periods
 }
 \description{
-GET a list of legislative periods
+Get a complete list of legislative periods for the Brazilian House of Representatives since 1826.
 }
 \examples{
 a <- legislaturas()
@@ -21,7 +21,6 @@ a <- legislaturas()
 \seealso{
 Other legislaturas: 
 \code{\link{legislaturas_id}()},
-\code{\link{legislaturas_info}()},
 \code{\link{legislaturas_mesa}()}
 }
 \concept{legislaturas}

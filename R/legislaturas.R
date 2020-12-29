@@ -1,6 +1,10 @@
-#' @title GET a list of legislative periods
+#' @title Get a list of legislative periods
 #'
-#' @param ... query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
+#' @description
+#'
+#' Get a complete list of legislative periods for the Brazilian House of Representatives since 1826.
+#'
+#' @param ... Query parameters for the Brazilian House of Representatives API
 #'
 #' @return A tibble with a list of legislative periods
 #' @export
@@ -9,15 +13,12 @@
 #' a <- legislaturas()
 legislaturas <- function(...) {
 
-  query_list <- list(...)
+  query_list <- list(..., itens = 100)
 
   req <- main_api("legislaturas",query_list)
 
   content <- req$dados
-
-  if (length(content) == 0) {
-    warning("There is no data for this entry.", call. = FALSE)
-  }
+  not_zero_content(content)
 
   if ("uri" %in% names(content)) {
     tibble::as_tibble(content) %>%
@@ -31,7 +32,7 @@ legislaturas <- function(...) {
 
 #' @title Extract a legislative period id
 #'
-#' @param date a date (YYYY-MM-DD) for checking an active legislative period id
+#' @param date A date (YYYY-MM-DD) for checking a legislative period id
 #'
 #' @return A legislative period id
 #' @export
@@ -39,13 +40,13 @@ legislaturas <- function(...) {
 #' @examples
 #' legislaturas_id(date = "2020-01-01")
 legislaturas_id <- function(date) {
-
+  assertthat::assert_that(!missing(date),msg = "'date' is missing")
   date <- check_date(date)
 
   id <- tryCatch(
     legislaturas(data = date)$id,
     error = function(e) {
-      stop("404 Not found")
+      stop(paste0("404 Not found. There isn't an active legislative period for '",date,"'"), call. = FALSE)
     }
   )
 
@@ -54,63 +55,33 @@ legislaturas_id <- function(date) {
 }
 
 
-#' @title Get legislative period information
+#' @title Get information on speakers of the House of Representative for a given legislative period
 #'
-#' @param id legislative period id
+#' @description
 #'
-#' @return A tibble with legislative period information
-#' @export
-#' @family legislaturas
-#' @examples
-#' a <- legislaturas_info(id = 1)
-legislaturas_info <- function(id) {
-
-  if (is.numeric(id)) {
-    id <- as.character(id)
-  }
-
-
-  path <- paste0("legislaturas/",id)
-  req <- main_api(path)
-
-  content <- req$dados
-
-  tibble::as_tibble(content) %>%
-    dplyr::select(-uri)
-
-}
-
-
-#' @title Get information of speakers for the House of Representative for a given legislative period
+#' Get information on speakers of the House of Representatives for a given legislative period.
+#' Usually each legislative period have two groups of speakers.
 #'
-#' @param id legislative period id
-#' @param ... query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
+#' @param id An unique identifier for a legislative period
 #'
-#' @return A tibble with speakers for the House of Representative for a given legislative period
+#' @return A tibble with speakers of the House of Representative for a given legislative period
 #' @export
 #' @family legislaturas
 #' @examples
 #' a <- legislaturas_mesa(id = 55)
-legislaturas_mesa <- function(id,...) {
+legislaturas_mesa <- function(id) {
 
+  assertthat::assert_that(!missing(id),msg = "'id' is missing")
   if (is.numeric(id)) {
     id <- as.character(id)
   }
 
-  query_list <- list(...)
-
 
   path <- paste0("legislaturas/",id, "/mesa")
-  req <- main_api(path, query_list)
+  req <- main_api(path)
 
   content <- req$dados
-
-
-  if (length(content) == 0) {
-
-    warning("There is no data for this entry.", call. = FALSE)
-
-  }
+  not_zero_content(content)
 
   if ("uri" %in% names(content)) {
     tibble::as_tibble(content) %>%

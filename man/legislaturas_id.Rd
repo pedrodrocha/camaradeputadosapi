@@ -7,7 +7,7 @@
 legislaturas_id(date)
 }
 \arguments{
-\item{date}{a date (YYYY-MM-DD) for checking an active legislative period id}
+\item{date}{A date (YYYY-MM-DD) for checking a legislative period id}
 }
 \value{
 A legislative period id
@@ -20,7 +20,6 @@ legislaturas_id(date = "2020-01-01")
 }
 \seealso{
 Other legislaturas: 
-\code{\link{legislaturas_info}()},
 \code{\link{legislaturas_mesa}()},
 \code{\link{legislaturas}()}
 }
