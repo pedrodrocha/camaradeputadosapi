@@ -1,33 +1,30 @@
-#' @title Get a list of propositions discussed in between a time interval
+#' @title Get a list of propositions presented at the Brazilian House of Representatives API
 #'
-#' @param ... query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)
-#' @param from start date (YYYY-MM-DD) for the time interval in which a proposition was discussed
-#' @param to end date (YYYY-MM) for the time interval in which a proposition was discussed
+#' @description
+#' Get a list of propositions presented at the Brazilian House of Representatives API.
+#' By default it returns the max query limit of 100 propositions active on the last 30 days.
+#' You can control for proceeding periods using the API parameters 'dataInicio' and 'dataFim' and for the date the proposition was first presented using 'dataApresentacaoInicio' and 'dataApresentacaoFim'.
+#' You can also filter propositions by thematic area with 'codTema'.
+#' For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
+#'
+#' @param ... Further query parameters from the House of Representatives API
 #'
 #' @return A tibble of propositions discussed in between a time interval
 #' @export
 #' @family proposicoes
-#' @examples proposicoes(from = "2020-01-01", to = "2020-12-01", itens = 100)
-proposicoes <- function(..., from, to) {
-
-  assertthat::`%has_args%`(proposicoes,args = c(from,to))
-  from <- check_date(from)
-  to <- check_date(to)
-
-
+#' @examples
+#' a <- proposicoes(dataInicio = "2020-12-01", dataFim = "2020-12-01")
+proposicoes <- function(...) {
   query_list <- list(
-    dataInicio = from,
-    dataFim = to,
+    itens = 100,
     ...
   )
+  check_api_parameters(names(query_list),query_list)
 
   req <- main_api("proposicoes",query_list)
 
   content <- req$dados
-
-  if (length(content) == 0) {
-    warning("There is no data for this entry.", call. = FALSE)
-  }
+  not_zero_content(content)
 
   if ("uri" %in% names(content)) {
     tibble::as_tibble(content) %>%
@@ -38,15 +35,50 @@ proposicoes <- function(..., from, to) {
   }
 }
 
-#' @title Get detailed information about a proposition of Brazilian House of Representatives
+#' @title  Extract a proposition unique identifier
 #'
-#' @param id A proposition identifier
+#' @description
+#'
+#' Extract a proposition unique identifier from its standard name (Ex: "PL 1665/2020")
+#'
+#'
+#' @param type The type of proposition. Ex: 'PL' stands for 'Projeto de Lei' or Draft Bill.
+#' @param number The number of the proposition. Ex: 1665
+#' @param year The year of the proposition. Ex: 2020
+#'
+#' @return A proposition uniquer identifier
+#' @export
+#' @family proposicoes
+#' @examples
+#' a <- proposicoes_id(type = "PL",number = 1665, year = 2020)
+
+proposicoes_id <- function(type, number, year) {
+  assertthat::assert_that(!missing(type),msg = "'type' is missing")
+  assertthat::assert_that(!missing(number),msg = "'number' is missing")
+  assertthat::assert_that(!missing(year),msg = "'year' is missing")
+
+  content <- proposicoes(siglaTipo = type, numero = number, ano = year)
+
+  content$id
+
+}
+
+
+#' @title Get information about a proposition of Brazilian House of Representatives
+#'
+#' @description
+#'
+#' Get detailed information about a proposition presented at the Brazilian House of representatives
+#' @param id A proposition unique identifier
 #'
 #' @return A tibble with information about a proposition
 #' @export
 #' @family proposicoes
-#' @examples proposicoes_info(id = 15990)
+#' @examples
+#' a <- proposicoes_info(id = 15990)
 proposicoes_info <- function(id) {
+
+  assertthat::assert_that(!missing(id),msg = "'type' is missing")
   if (is.numeric(id)) {
     id <- as.character(id)
   }
@@ -56,14 +88,12 @@ proposicoes_info <- function(id) {
   req <- main_api(path)
 
   content <- req$dados
+  not_zero_content(content)
 
   content <- zero_or_null(content)
   content <- tibble::as_tibble(content)
   content$statusProposicao <- tibble::as_tibble(zero_or_null(content$statusProposicao))
 
-  if (length(content) == 0) {
-    warning("There is no data for this entry.", call. = FALSE)
-  }
 
   if ("uri" %in% names(content)) {
     tibble::as_tibble(content) %>%
@@ -78,15 +108,21 @@ proposicoes_info <- function(id) {
 
 }
 
-#' @title  Get a list with authors of a given proposition
+#' @title  Get a list of authors for a given proposition
 #'
-#' @param id A proposition identifier
+#' @description
+#'
+#' Get a list of authors for a given proposition. Note: not only representatives are authors.
+#' By the House of Representatives regiment every signatory is considered author.
+#'
+#' @param id A proposition unique identifier
 #'
 #' @return A tibble with authors of a given proposition
 #' @export
 #' @family proposicoes
 #' @examples proposicoes_autores(id = 15990)
 proposicoes_autores <- function(id) {
+  assertthat::assert_that(!missing(id),msg = "'type' is missing")
   if (is.numeric(id)) {
     id <- as.character(id)
   }
@@ -97,9 +133,7 @@ proposicoes_autores <- function(id) {
 
   content <- req$dados
 
-  if (length(content) == 0) {
-    warning("There is no data for this entry.", call. = FALSE)
-  }
+  not_zero_content(content)
 
   if ("uri" %in% names(content)) {
     tibble::as_tibble(content) %>%
@@ -112,13 +146,18 @@ proposicoes_autores <- function(id) {
 
 #' @title Get a list of propositions related to a given proposition
 #'
-#' @param id A proposition identifier
+#' @description
+#' Get a list of propositions from any type that are related to a given proposition
+#'
+#' @param id A proposition unique identifier
 #'
 #' @return A tibble of propositions related to a given proposition
 #' @export
 #' @family proposicoes
-#' @examples proposicoes_relacionadas(id = 15990)
+#' @examples
+#' a <- proposicoes_relacionadas(id = 2244218)
 proposicoes_relacionadas <- function(id) {
+  assertthat::assert_that(!missing(id),msg = "'type' is missing")
   if (is.numeric(id)) {
     id <- as.character(id)
   }
@@ -128,10 +167,7 @@ proposicoes_relacionadas <- function(id) {
   req <- main_api(path)
 
   content <- req$dados
-
-  if (length(content) == 0) {
-    warning("There is no data for this entry.", call. = FALSE)
-  }
+  not_zero_content(content)
 
   if ("uri" %in% names(content)) {
     tibble::as_tibble(content) %>%
@@ -145,13 +181,19 @@ proposicoes_relacionadas <- function(id) {
 
 #' @title Get a list of thematic areas related to a given proposition
 #'
-#' @param id A proposition identifier
+#' @description
+#'
+#' Get a list of thematic areas for a given proposition, according to classification from the House of Representatives Center of Information and Documentation.
+#'
+#'
+#' @param id A proposition unique identifier
 #'
 #' @return A tibble of thematic areas related to a given proposition
 #' @export
 #' @family proposicoes
 #' @examples proposicoes_temas(id = 15990)
 proposicoes_temas <- function(id) {
+  assertthat::assert_that(!missing(id),msg = "'type' is missing")
   if (is.numeric(id)) {
     id <- as.character(id)
   }
@@ -161,10 +203,7 @@ proposicoes_temas <- function(id) {
   req <- main_api(path)
 
   content <- req$dados
-
-  if (length(content) == 0) {
-    warning("There is no data for this entry.", call. = FALSE)
-  }
+  not_zero_content(content)
 
   if ("uri" %in% names(content)) {
     tibble::as_tibble(content) %>%
@@ -177,13 +216,17 @@ proposicoes_temas <- function(id) {
 
 #' @title Get the historical record of a proposition at the House of Representatives
 #'
-#' @param id A proposition identifier
+#' @description
+#'
+#' Get the historical record of a proposition at the House of Representatives since it was first presented.
+#' @param id A proposition unique identifier
 #'
 #' @return A tibble with the historical record of a proposition at the House of Representatives
 #' @export
 #' @family proposicoes
 #' @examples proposicoes_historico(id = 15990)
 proposicoes_historico <- function(id){
+  assertthat::assert_that(!missing(id),msg = "'type' is missing")
   if (is.numeric(id)) {
     id <- as.character(id)
   }
@@ -194,9 +237,7 @@ proposicoes_historico <- function(id){
 
   content <- req$dados
 
-  if (length(content) == 0) {
-    warning("There is no data for this entry.", call. = FALSE)
-  }
+  not_zero_content(content)
 
   if ("uriOrgao" %in% names(content)) {
     tibble::as_tibble(content) %>%
@@ -207,15 +248,20 @@ proposicoes_historico <- function(id){
   }
 }
 
-#' @title Get information on voting procedures of a proposition and that affected a proposition
+#' @title Get information on voting procedures for a proposition and for those that affected a proposition
 #'
-#' @param id A proposition identifier
+#' @description
+#' Get basic information on voting procedures for a proposition and for those that affected a proposition.
+#'
+#' @param id A proposition unique identifier
 #'
 #' @return A tibble with information on voting procedures of a proposition and that affected a proposition
 #' @export
 #' @family proposicoes
-#' @examples proposicoes_votacoes(id = 17823)
+#' @examples
+#' a <- proposicoes_votacoes(id = 2244218)
 proposicoes_votacoes <- function(id){
+  assertthat::assert_that(!missing(id),msg = "'type' is missing")
   if (is.numeric(id)) {
     id <- as.character(id)
   }
@@ -225,10 +271,7 @@ proposicoes_votacoes <- function(id){
   req <- main_api(path)
 
   content <- req$dados
-
-  if (length(content) == 0) {
-    warning("There is no data for this entry.", call. = FALSE)
-  }
+  not_zero_content(content)
 
   if ("uriOrgao" %in% names(content)) {
     tibble::as_tibble(content) %>%
@@ -239,9 +282,19 @@ proposicoes_votacoes <- function(id){
   }
 }
 
-#' @title Get metadata information on data related to 'proposicoes'
+#' @title Get metadata information for data related to 'proposicoes'
 #'
-#' @param meta tables of metadata for querying
+#'
+#' @description
+#'
+#' Get metadata information for data related to 'proposicoes'.
+#' Five types of metadata are available: a) 'siglaTipo', with types of propositions;
+#' b) 'codSituacao', with types of status for a proposition;
+#' c) 'tiposTramitacao', with types of procedures for a proposition;
+#' d) 'codTema', with types of thematic areas a proposition can be classified;
+#' e) 'codTipoAuto', with actors that can be authors of a proposition
+#'
+#' @param meta Types of metadata
 #'
 #' @return A list of tibbles with metadata information on data related to 'proposicoes'
 #' @export
@@ -263,6 +316,7 @@ proposicoes_referencias <- function(meta = c("siglaTipo","codSituacao","tiposTra
   req <- main_api(path = path)
 
   content <- req$dados
+  not_zero_content(content)
 
   content$siglaTipo <- tibble::as_tibble(content$siglaTipo)
   content$codSituacao <- tibble::as_tibble(content$codSituacao)

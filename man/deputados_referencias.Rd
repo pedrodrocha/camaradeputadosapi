@@ -2,18 +2,19 @@
 % Please edit documentation in R/deputados.R
 \name{deputados_referencias}
 \alias{deputados_referencias}
-\title{Get metadata information on data related to 'deputados'}
+\title{Get metadata information for data related to 'deputados'}
 \usage{
 deputados_referencias(meta = c("siglaUF", "siglaSituacao"))
 }
 \arguments{
-\item{meta}{Tables of metadata for querying}
+\item{meta}{Types of metadata}
 }
 \value{
 A list of tibbles with metadata information on data related to the family 'deputados'
 }
 \description{
-Get metadata information of data related to 'deputados'. Two types of metadata are available: a) 'siglaUF', with a list of Brazilian states; b) 'siglaSituacao', with a list of status for representatives.
+Get metadata information for data related to 'deputados'.
+Two types of metadata are available: a) 'siglaUF', with a list of Brazilian states; b) 'siglaSituacao', with a list of status for representatives.
 }
 \examples{
 a <- deputados_referencias()

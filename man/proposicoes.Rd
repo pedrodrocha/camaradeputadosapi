@@ -2,30 +2,31 @@
 % Please edit documentation in R/proposicoes.R
 \name{proposicoes}
 \alias{proposicoes}
-\title{Get a list of propositions discussed in between a time interval}
+\title{Get a list of propositions presented at the Brazilian House of Representatives API}
 \usage{
-proposicoes(..., from, to)
+proposicoes(...)
 }
 \arguments{
-\item{...}{query parameters for the House of Representatives API (See: https://dadosabertos.camara.leg.br/swagger/api.html)}
-
-\item{from}{start date (YYYY-MM-DD) for the time interval in which a proposition was discussed}
-
-\item{to}{end date (YYYY-MM) for the time interval in which a proposition was discussed}
+\item{...}{Further query parameters from the House of Representatives API}
 }
 \value{
 A tibble of propositions discussed in between a time interval
 }
 \description{
-Get a list of propositions discussed in between a time interval
+Get a list of propositions presented at the Brazilian House of Representatives API.
+By default it returns the max query limit of 100 propositions active on the last 30 days.
+You can control for proceeding periods using the API parameters 'dataInicio' and 'dataFim' and for the date the proposition was first presented using 'dataApresentacaoInicio' and 'dataApresentacaoFim'.
+You can also filter propositions by thematic area with 'codTema'.
+For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
 }
 \examples{
-proposicoes(from = "2020-01-01", to = "2020-12-01", itens = 100)
+a <- proposicoes(dataInicio = "2020-12-01", dataFim = "2020-12-01")
 }
 \seealso{
 Other proposicoes: 
 \code{\link{proposicoes_autores}()},
 \code{\link{proposicoes_historico}()},
+\code{\link{proposicoes_id}()},
 \code{\link{proposicoes_info}()},
 \code{\link{proposicoes_referencias}()},
 \code{\link{proposicoes_relacionadas}()},

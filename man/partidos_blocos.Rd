@@ -13,7 +13,7 @@ A tibble of blocs in the current legislative term at the Brazilian House of Repr
 Get a list of blocs of political parties in the current legislative period at the Brazilian House of Representatives
 }
 \examples{
-partidos_blocos()
+a <- partidos_blocos()
 }
 \seealso{
 Other partidos: 

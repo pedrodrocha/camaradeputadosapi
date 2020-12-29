@@ -48,8 +48,32 @@ check_api_parameters <- function(param, query_list) {
         stop("Wrong date format for 'dataFim'. Try 'YYYY-MM-DD'", call. = FALSE)
       }
     )
-
   }
+
+
+  if (is.element("dataApresentacaoInicio",param)) {
+    date <- suppressWarnings(lubridate::ymd(query_list['dataApresentacaoInicio']))
+
+    tryCatch(
+      assertthat::assert_that(!is.na(date)),
+      error = function(e) {
+        stop("Wrong date format for 'dataApresentacaoInicio'. Try 'YYYY-MM-DD'", call. = FALSE)
+      }
+    )
+  }
+
+  if (is.element("dataApresentacaoFim",param)) {
+    date <- suppressWarnings(lubridate::ymd(query_list['dataApresentacaoFim']))
+
+    tryCatch(
+      assertthat::assert_that(!is.na(date)),
+      error = function(e) {
+        stop("Wrong date format for 'dataApresentacaoFim'. Try 'YYYY-MM-DD'", call. = FALSE)
+      }
+    )
+  }
+
+
 
   if (is.element("siglaSexo",param)) {
 

@@ -7,21 +7,22 @@
 proposicoes_relacionadas(id)
 }
 \arguments{
-\item{id}{A proposition identifier}
+\item{id}{A proposition unique identifier}
 }
 \value{
 A tibble of propositions related to a given proposition
 }
 \description{
-Get a list of propositions related to a given proposition
+Get a list of propositions from any type that are related to a given proposition
 }
 \examples{
-proposicoes_relacionadas(id = 15990)
+a <- proposicoes_relacionadas(id = 2244218)
 }
 \seealso{
 Other proposicoes: 
 \code{\link{proposicoes_autores}()},
 \code{\link{proposicoes_historico}()},
+\code{\link{proposicoes_id}()},
 \code{\link{proposicoes_info}()},
 \code{\link{proposicoes_referencias}()},
 \code{\link{proposicoes_temas}()},

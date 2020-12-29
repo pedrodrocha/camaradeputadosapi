@@ -2,26 +2,27 @@
 % Please edit documentation in R/proposicoes.R
 \name{proposicoes_votacoes}
 \alias{proposicoes_votacoes}
-\title{Get information on voting procedures of a proposition and that affected a proposition}
+\title{Get information on voting procedures for a proposition and for those that affected a proposition}
 \usage{
 proposicoes_votacoes(id)
 }
 \arguments{
-\item{id}{A proposition identifier}
+\item{id}{A proposition unique identifier}
 }
 \value{
 A tibble with information on voting procedures of a proposition and that affected a proposition
 }
 \description{
-Get information on voting procedures of a proposition and that affected a proposition
+Get basic information on voting procedures for a proposition and for those that affected a proposition.
 }
 \examples{
-proposicoes_votacoes(id = 17823)
+a <- proposicoes_votacoes(id = 2244218)
 }
 \seealso{
 Other proposicoes: 
 \code{\link{proposicoes_autores}()},
 \code{\link{proposicoes_historico}()},
+\code{\link{proposicoes_id}()},
 \code{\link{proposicoes_info}()},
 \code{\link{proposicoes_referencias}()},
 \code{\link{proposicoes_relacionadas}()},

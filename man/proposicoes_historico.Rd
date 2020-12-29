@@ -7,13 +7,13 @@
 proposicoes_historico(id)
 }
 \arguments{
-\item{id}{A proposition identifier}
+\item{id}{A proposition unique identifier}
 }
 \value{
 A tibble with the historical record of a proposition at the House of Representatives
 }
 \description{
-Get the historical record of a proposition at the House of Representatives
+Get the historical record of a proposition at the House of Representatives since it was first presented.
 }
 \examples{
 proposicoes_historico(id = 15990)
@@ -21,6 +21,7 @@ proposicoes_historico(id = 15990)
 \seealso{
 Other proposicoes: 
 \code{\link{proposicoes_autores}()},
+\code{\link{proposicoes_id}()},
 \code{\link{proposicoes_info}()},
 \code{\link{proposicoes_referencias}()},
 \code{\link{proposicoes_relacionadas}()},

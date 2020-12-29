@@ -2,26 +2,27 @@
 % Please edit documentation in R/proposicoes.R
 \name{proposicoes_info}
 \alias{proposicoes_info}
-\title{Get detailed information about a proposition of Brazilian House of Representatives}
+\title{Get information about a proposition of Brazilian House of Representatives}
 \usage{
 proposicoes_info(id)
 }
 \arguments{
-\item{id}{A proposition identifier}
+\item{id}{A proposition unique identifier}
 }
 \value{
 A tibble with information about a proposition
 }
 \description{
-Get detailed information about a proposition of Brazilian House of Representatives
+Get detailed information about a proposition presented at the Brazilian House of representatives
 }
 \examples{
-proposicoes_info(id = 15990)
+a <- proposicoes_info(id = 15990)
 }
 \seealso{
 Other proposicoes: 
 \code{\link{proposicoes_autores}()},
 \code{\link{proposicoes_historico}()},
+\code{\link{proposicoes_id}()},
 \code{\link{proposicoes_referencias}()},
 \code{\link{proposicoes_relacionadas}()},
 \code{\link{proposicoes_temas}()},

@@ -2,18 +2,19 @@
 % Please edit documentation in R/proposicoes.R
 \name{proposicoes_autores}
 \alias{proposicoes_autores}
-\title{Get a list with authors of a given proposition}
+\title{Get a list of authors for a given proposition}
 \usage{
 proposicoes_autores(id)
 }
 \arguments{
-\item{id}{A proposition identifier}
+\item{id}{A proposition unique identifier}
 }
 \value{
 A tibble with authors of a given proposition
 }
 \description{
-Get a list with authors of a given proposition
+Get a list of authors for a given proposition. Note: not only representatives are authors.
+By the House of Representatives regiment every signatory is considered author.
 }
 \examples{
 proposicoes_autores(id = 15990)
@@ -21,6 +22,7 @@ proposicoes_autores(id = 15990)
 \seealso{
 Other proposicoes: 
 \code{\link{proposicoes_historico}()},
+\code{\link{proposicoes_id}()},
 \code{\link{proposicoes_info}()},
 \code{\link{proposicoes_referencias}()},
 \code{\link{proposicoes_relacionadas}()},

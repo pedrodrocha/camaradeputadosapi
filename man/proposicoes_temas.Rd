@@ -7,13 +7,13 @@
 proposicoes_temas(id)
 }
 \arguments{
-\item{id}{A proposition identifier}
+\item{id}{A proposition unique identifier}
 }
 \value{
 A tibble of thematic areas related to a given proposition
 }
 \description{
-Get a list of thematic areas related to a given proposition
+Get a list of thematic areas for a given proposition, according to classification from the House of Representatives Center of Information and Documentation.
 }
 \examples{
 proposicoes_temas(id = 15990)
@@ -22,6 +22,7 @@ proposicoes_temas(id = 15990)
 Other proposicoes: 
 \code{\link{proposicoes_autores}()},
 \code{\link{proposicoes_historico}()},
+\code{\link{proposicoes_id}()},
 \code{\link{proposicoes_info}()},
 \code{\link{proposicoes_referencias}()},
 \code{\link{proposicoes_relacionadas}()},
