@@ -50,7 +50,7 @@ legislaturas_id <- function(date) {
     }
   )
 
-  id
+  as.character(id)
 
 }
 
