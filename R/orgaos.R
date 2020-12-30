@@ -1,23 +1,28 @@
 #' @title Get a list of bodies and commissions
 #'
-#' @param ... query parameters for the House of Representatives API (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info})
+#' @description
+#' Get a list of bodies and commissions from the Brazilian House of Representatives
+#' You can use further query parameters for filter the list.
+#' For example for filter according to the type you can use 'codTipoOrgao'.
+#' For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
 #'
-#' @return A tibble of bodies and commissions
+#' @param ... Further query parameters from the House of Representatives API
+#'
+#' @return A tibble of bodies and commissions from the Brazilian House of Representatives
 #' @export
 #' @family orgaos
 #' @examples
 #' a <- orgaos()
-#' b <- orgaos(dataInicio = "2020-01-01", dataFim = "2020-12-31")
+#' \donttest{
+#'  b <- orgaos(codTIpoOrgao = 1)
+#' }
 orgaos <- function(...) {
   query_list <- list(...)
-
+  check_api_parameters(names(query_list),query_list)
   req <- main_api("orgaos",query_list)
 
   content <- req$dados
-
-  if (length(content) == 0) {
-    stop("There is no data for this entry.", call. = FALSE)
-  }
+  not_zero_content(content)
 
   if ("uri" %in% names(content)) {
     tibble::as_tibble(content) %>%
@@ -37,7 +42,7 @@ orgaos <- function(...) {
 #' @family orgaos
 #' @examples a <- orgaos_id(abbr = "PLEN")
 orgaos_id <- function(abbr) {
-
+  assertthat::assert_that(!missing(abbr),msg = "'abbr' is missing")
   assertthat::assert_that(is.character(abbr))
   assertthat::assert_that(length(abbr) == 1)
 
@@ -50,6 +55,9 @@ orgaos_id <- function(abbr) {
 
 #' @title Get information on a Brazilian House of Representatives body or commission
 #'
+#' @description
+#' Get all the information available on a given Brazilian House of Representatives body or commission
+#'
 #' @param id A body or commission unique identifier
 #'
 #' @return A tibble with information on a Brazilian House of Representatives body or commission
@@ -58,6 +66,7 @@ orgaos_id <- function(abbr) {
 #' @examples
 #' a <- orgaos_info(id = 180)
 orgaos_info <- function(id) {
+  assertthat::assert_that(!missing(id),msg = "'id' is missing")
   if (is.numeric(id)) {
     id <- as.character(id)
   }
@@ -66,14 +75,12 @@ orgaos_info <- function(id) {
   req <- tryCatch(
     main_api(path),
     error = function(e) {
-      stop(e,call. = FALSE)
+      stop(paste0("404 Not Found. Couldn't find a body or commission for id'",id,"'"), call. = FALSE)
     }
   )
 
   content <- req$dados
-  if (length(content) == 0) {
-    stop("There is no data for this entry.", call. = FALSE)
-  }
+  not_zero_content(content)
 
 
   content <- zero_or_null(content)
@@ -90,16 +97,22 @@ orgaos_info <- function(id) {
 
 #' @title Get events that occurred or are on schedule for a given body or commission in between a time interval
 #'
+#' @description
+#' Get events that occurred or are on schedule for a given body or commission in between a time interval.
+#' The maximum limit of results is 100 per query.
+#' For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
+
+#'
 #' @param id A body or commission unique identifier
 #' @param from The beginning date (YYYY-MM-DD) for the time interval
 #' @param to The end date (YYYY-MM-DD) for the time interval
-#' @param ... query parameters for the House of Representatives API (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info})
+#' @param ... Further query parameters from the House of Representatives API
 #'
 #' @return A tibble with events that occurred or are on schedule for a given body or commission in between a time interval
 #' @export
 #' @family orgaos
 #' @examples
-#' a <- orgaos_eventos(id = 180, from = "2020-01-01", to = "2020-10-01")
+#' a <- orgaos_eventos(id = 180, from = "2020-01-01", to = "2020-03-01")
 orgaos_eventos <- function(id,from,to, ...) {
 
   assertthat::assert_that(!missing(id),msg = "'id' is missing")
@@ -113,14 +126,15 @@ orgaos_eventos <- function(id,from,to, ...) {
     id <- as.character(id)
   }
 
-  query_list <- list(..., dataInicio = from, dataFim = to)
+  query_list <- list(..., dataInicio = from, dataFim = to, itens = 100)
+  check_api_parameters(names(query_list),query_list)
+  max_limit100(names(query_list),query_list)
 
   path <- paste0("orgaos/", id, "/eventos")
   req <- main_api(path, query_list)
 
   content <- req$dados
-
-  assertthat::assert_that(length(content) != 0, msg = "There is no data for this entry")
+  not_zero_content(content)
 
   if ("uri" %in% names(content)) {
     tibble::as_tibble(content) %>%
@@ -131,10 +145,15 @@ orgaos_eventos <- function(id,from,to, ...) {
   }
 }
 
-#' @title Get a list of positions of representatives on a body or commission
+#' @title Get a list of roles of representatives members of a body or commission
+#'
+#' @description
+#'
+#' Get information on roles of representatives on a body or commission at the Brazilian House of Representatives.
+#' If query parameters from the API such as 'dataInicio' or 'dataFim' are not used, it will return members and their roles at the time of the function call.
 #'
 #' @param id A body or commission unique identifier
-#' @param ... query parameters for the House of Representatives API (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info})
+#' @param ... Further query parameters from the House of Representatives API
 #'
 #' @return A tibble of positions of representatives on a body or commission
 #' @export
@@ -150,15 +169,12 @@ orgaos_membros <- function(id,...) {
   }
 
   query_list <- list(...)
-
+  check_api_parameters(names(query_list),query_list)
   path <- paste0("orgaos/", id, "/membros")
   req <- main_api(path, query_list)
 
   content <- req$dados
-
-  if (length(content) == 0) {
-    warning("There is no data for this entry.", call. = FALSE)
-  }
+  not_zero_content(content)
 
   if ("uri" %in% names(content)) {
     tibble::as_tibble(content) %>%
@@ -170,15 +186,22 @@ orgaos_membros <- function(id,...) {
 }
 
 
-#' @title Get information on voting procedures in a body or commission
+#' @title Get information on votings in a body or commission
+#'
+#' @description
+#' Get information on votings occurred in a given body or commission from the Brazilian House of Representatives.
+#' If the body or commission is permanent and query parameters from the API such as 'dataIncio' and 'dataFim' are not used, it will return votings from the last 30 days.
+#' If the body or commission is not permanent, it will return all votings.
+#' By default it returns the maximum query limit of 200 results.
+#' For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
 #'
 #' @param id A body or commission unique identifier
-#' @param ... query parameters for the House of Representatives API (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info})
-#'
+#' @param ... Further query parameters from the House of Representatives API
 #' @return A tibble with information on voting procedures in a body or commission
 #' @export
 #' @family orgaos
-#' @examples a <- orgaos_votacoes(id = orgaos_id(abbr = "PLEN"))
+#' @examples
+#' a <- orgaos_votacoes(id = 180, dataInicio = "2020-12-01", dataFim = "2020-12-02")
 orgaos_votacoes <- function(id, ...) {
   assertthat::assert_that(!missing(id),msg = "'id' is missing")
 
@@ -186,7 +209,8 @@ orgaos_votacoes <- function(id, ...) {
     id <- as.character(id)
   }
 
-  query_list <- list(...)
+  query_list <- list(..., itens = 200)
+  check_api_parameters(names(query_list),query_list)
 
   path <- paste0("orgaos/", id, "/votacoes")
   req <- main_api(path, query_list)
@@ -216,11 +240,19 @@ orgaos_votacoes <- function(id, ...) {
 }
 
 
-#' @title Get metadata information on data related to 'orgaos'
+#' @title Get metadata information for data related to 'orgaos'
 #'
-#' @param meta tables of metadata for querying
 #'
-#' @return A list of tibbles with metadata information on data related to the family 'eventos'
+#' @description
+#'
+#' Get metadata information for data related to 'orgaos'.
+#' Two types of metadata are available:
+#' a)'idTipoOrgao': Has information on the types of bodies and commissions at the Brazilian House of Representatives;
+#' b)'idSituacao': Has information on the status of bodies and commissions at the Brazilian House of Representatives.
+#'
+#' @param meta Types of metadata
+#'
+#' @return A list of tibbles with metadata information on data related to the family 'orgaos'
 #' @export
 #' @family orgaos
 #' @examples

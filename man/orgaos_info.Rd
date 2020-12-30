@@ -13,7 +13,7 @@ orgaos_info(id)
 A tibble with information on a Brazilian House of Representatives body or commission
 }
 \description{
-Get information on a Brazilian House of Representatives body or commission
+Get all the information available on a given Brazilian House of Representatives body or commission
 }
 \examples{
 a <- orgaos_info(id = 180)

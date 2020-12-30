@@ -2,20 +2,21 @@
 % Please edit documentation in R/orgaos.R
 \name{orgaos_membros}
 \alias{orgaos_membros}
-\title{Get a list of positions of representatives on a body or commission}
+\title{Get a list of roles of representatives members of a body or commission}
 \usage{
 orgaos_membros(id, ...)
 }
 \arguments{
 \item{id}{A body or commission unique identifier}
 
-\item{...}{query parameters for the House of Representatives API (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info})}
+\item{...}{Further query parameters from the House of Representatives API}
 }
 \value{
 A tibble of positions of representatives on a body or commission
 }
 \description{
-Get a list of positions of representatives on a body or commission
+Get information on roles of representatives on a body or commission at the Brazilian House of Representatives.
+If query parameters from the API such as 'dataInicio' or 'dataFim' are not used, it will return members and their roles at the time of the function call.
 }
 \examples{
 a <- orgaos_membros(id = 2007)

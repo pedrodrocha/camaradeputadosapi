@@ -13,16 +13,18 @@ orgaos_eventos(id, from, to, ...)
 
 \item{to}{The end date (YYYY-MM-DD) for the time interval}
 
-\item{...}{query parameters for the House of Representatives API (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info})}
+\item{...}{Further query parameters from the House of Representatives API}
 }
 \value{
 A tibble with events that occurred or are on schedule for a given body or commission in between a time interval
 }
 \description{
-Get events that occurred or are on schedule for a given body or commission in between a time interval
+Get events that occurred or are on schedule for a given body or commission in between a time interval.
+The maximum limit of results is 100 per query.
+For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
 }
 \examples{
-a <- orgaos_eventos(id = 180, from = "2020-01-01", to = "2020-10-01")
+a <- orgaos_eventos(id = 180, from = "2020-01-01", to = "2020-03-01")
 }
 \seealso{
 Other orgaos: 

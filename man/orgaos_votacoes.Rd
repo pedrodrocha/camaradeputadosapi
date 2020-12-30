@@ -2,23 +2,27 @@
 % Please edit documentation in R/orgaos.R
 \name{orgaos_votacoes}
 \alias{orgaos_votacoes}
-\title{Get information on voting procedures in a body or commission}
+\title{Get information on votings in a body or commission}
 \usage{
 orgaos_votacoes(id, ...)
 }
 \arguments{
 \item{id}{A body or commission unique identifier}
 
-\item{...}{query parameters for the House of Representatives API (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info})}
+\item{...}{Further query parameters from the House of Representatives API}
 }
 \value{
 A tibble with information on voting procedures in a body or commission
 }
 \description{
-Get information on voting procedures in a body or commission
+Get information on votings occurred in a given body or commission from the Brazilian House of Representatives.
+If the body or commission is permanent and query parameters from the API such as 'dataIncio' and 'dataFim' are not used, it will return votings from the last 30 days.
+If the body or commission is not permanent, it will return all votings.
+By default it returns the maximum query limit of 200 results.
+For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
 }
 \examples{
-a <- orgaos_votacoes(id = orgaos_id(abbr = "PLEN"))
+a <- orgaos_votacoes(id = 180, dataInicio = "2020-12-01", dataFim = "2020-12-02")
 }
 \seealso{
 Other orgaos: 

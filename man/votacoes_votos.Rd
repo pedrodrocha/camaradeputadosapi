@@ -13,7 +13,8 @@ votacoes_votos(id)
 A tibble on representatives voting behavior for a given voting process
 }
 \description{
-Get information on representatives voting behavior for a given voting process
+Get information on representatives behavior on roll-call votes at the Brazilian House of Representatives.
+Note: There aren't recordings for absent representatives and the function will only return values for those that indeed vote.
 }
 \examples{
 a <- votacoes_votos(id = "2265603-43")

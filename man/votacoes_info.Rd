@@ -2,18 +2,18 @@
 % Please edit documentation in R/votacoes.R
 \name{votacoes_info}
 \alias{votacoes_info}
-\title{Get detailed information on voting processes}
+\title{Get information on voting processes}
 \usage{
 votacoes_info(id)
 }
 \arguments{
-\item{id}{An unique identifier for a voting process}
+\item{id}{An unique identifier for a voting process. You can find ids running \code{\link{votacoes}}}
 }
 \value{
-A list of tibbles with detailed information on voting processes
+A list of tibbles with detailed information on a voting process
 }
 \description{
-Get detailed information on voting processes
+Get detailed information on a given voting process occurred at the Brazilian House of Representatives.
 }
 \examples{
 a <- votacoes_info(id = "2265603-43")

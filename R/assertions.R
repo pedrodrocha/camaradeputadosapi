@@ -125,7 +125,7 @@ not_zero_content <- function(content) {
   )
 }
 
-#' @title Check max limit of requests
+#' @title Check max limit of requests(100)
 #'
 #' @param param API parameters name
 #' @param query_list API parameters list
@@ -133,7 +133,22 @@ max_limit100 <- function(param, query_list) {
 
   if (is.element("itens",param)) {
     if(query_list['itens'] > 100){
-      warning("The number of itens requested exceeded the max limit and the query will return only 100 results", call. = FALSE)
+      warning("The number of itens requested exceeded the max limit and the query will return a maximum 100 results", call. = FALSE)
+    }
+
+  }
+
+}
+
+#' @title Check max limit of requests(200)
+#'
+#' @param param API parameters name
+#' @param query_list API parameters list
+max_limit200 <- function(param, query_list) {
+
+  if (is.element("itens",param)) {
+    if(query_list['itens'] > 200){
+      warning("The number of itens requested exceeded the max limit and the query will return a maximum of 200 results", call. = FALSE)
     }
 
   }

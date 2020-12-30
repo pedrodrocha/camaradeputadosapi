@@ -2,18 +2,21 @@
 % Please edit documentation in R/orgaos.R
 \name{orgaos_referencias}
 \alias{orgaos_referencias}
-\title{Get metadata information on data related to 'orgaos'}
+\title{Get metadata information for data related to 'orgaos'}
 \usage{
 orgaos_referencias(meta = c("idTipoOrgao", "idSituacao"))
 }
 \arguments{
-\item{meta}{tables of metadata for querying}
+\item{meta}{Types of metadata}
 }
 \value{
-A list of tibbles with metadata information on data related to the family 'eventos'
+A list of tibbles with metadata information on data related to the family 'orgaos'
 }
 \description{
-Get metadata information on data related to 'orgaos'
+Get metadata information for data related to 'orgaos'.
+Two types of metadata are available:
+a)'idTipoOrgao': Has information on the types of bodies and commissions at the Brazilian House of Representatives;
+b)'idSituacao': Has information on the status of bodies and commissions at the Brazilian House of Representatives.
 }
 \examples{
 a <- orgaos_referencias()

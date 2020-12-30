@@ -13,7 +13,8 @@ votacoes_orientacoes(id)
 A tibble of voting guideline for a political party on a given voting process
 }
 \description{
-Get voting guideline for a political party on a given voting process
+Sometimes political parties guide the vote of its representatives.
+This function returns information on what were those guidelines for a given voting process
 }
 \examples{
 a <- votacoes_orientacoes(id = "2265603-43")

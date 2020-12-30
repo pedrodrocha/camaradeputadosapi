@@ -7,16 +7,19 @@
 votacoes(...)
 }
 \arguments{
-\item{...}{query parameters for the House of Representatives API (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info})}
+\item{...}{Further query parameters from the House of Representatives API}
 }
 \value{
 A tibble of voting processes
 }
 \description{
-Get a list of voting processes
+Get a list of voting processes on several bodies from the House of Representatives
+By default it returns the maximum query limit of 200 results.
+If query parameters from the API such as 'dataInicio', and 'dataFim'  are not used, it will return only results from the last 30 days.
+For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
 }
 \examples{
-a <- votacoes()
+a <- votacoes(dataInicio = "2020-12-01",dataFim = "2020-12-02")
 }
 \seealso{
 Other votacoes: 

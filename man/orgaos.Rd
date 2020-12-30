@@ -7,17 +7,22 @@
 orgaos(...)
 }
 \arguments{
-\item{...}{query parameters for the House of Representatives API (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info})}
+\item{...}{Further query parameters from the House of Representatives API}
 }
 \value{
-A tibble of bodies and commissions
+A tibble of bodies and commissions from the Brazilian House of Representatives
 }
 \description{
-Get a list of bodies and commissions
+Get a list of bodies and commissions from the Brazilian House of Representatives
+You can use further query parameters for filter the list.
+For example for filter according to the type you can use 'codTipoOrgao'.
+For further parameters please check the official API website (\href{https://dadosabertos.camara.leg.br/swagger/api.html}{Info}).
 }
 \examples{
 a <- orgaos()
-b <- orgaos(dataInicio = "2020-01-01", dataFim = "2020-12-31")
+\donttest{
+ b <- orgaos(codTIpoOrgao = 1)
+}
 }
 \seealso{
 Other orgaos: 
