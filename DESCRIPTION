@@ -6,7 +6,7 @@ Description: The goal of camaradeputadosapi is to ease access and provide a
     clean interface in R for querying the Brazilian House of Representatives 
     open data RESTful API. 
 License: MIT + file LICENSE
-URL: https://github.com/pedrodrocha/camaradeputadosapi
+URL: https://github.com/pedrodrocha/camaradeputadosapi, https://pedrodrocha.com/camaradeputadosapi/
 Encoding: UTF-8
 LazyData: true
 Imports: 
