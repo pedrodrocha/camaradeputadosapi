@@ -10,7 +10,7 @@ url: https://pedrodrocha.com/camaradeputadosapi
 
 home:
   links:
-    - text: Report a bug at
+    - text: Report a bug
       href: https://github.com/pedrodrocha/camaradeputadosapi/issues
 
 development:
