@@ -1,0 +1,74 @@
+template:
+  params:
+    bootswatch: simplex
+
+authors:
+  Pedro Rocha:
+    href: https://pedrodrocha.com/
+
+url: https://pedrodrocha.com/camaradeputadosapi
+
+home:
+  links:
+    - text: Report a bug at
+      href: https://github.com/pedrodrocha/camaradeputadosapi/issues
+
+development:
+  mode: release
+
+navbar:
+  structure:
+    left:
+    - home
+    - reference
+    - news
+    right: github
+  components:
+    home:
+      icon: fas fa-home fa-lg
+      href: index.html
+    reference:
+      text: Reference
+      href: reference/index.html
+    news:
+      text: Changelog
+      href: news/index.html
+
+reference:
+- title: 'deputados'
+  desc: Query data on representatives that are or were in office in any moment of time at the Brazilian House of Representatives
+- contents:
+  - starts_with('deputados')
+- title: 'eventos'
+  desc: Query data on events that occurred or are on schedule at the Brazilian House of Representatives
+- contents:
+  - starts_with('eventos')
+- title: 'frentes'
+  desc: Query data on parliamentary fronts created after 2003 at the Brazilian House of Representatives
+- contents:
+  - starts_with('frentes')
+- title: 'legislaturas'
+  desc: Query data on legislative periods for the Brazilian House of Representatives
+- contents:
+  - starts_with('legislaturas')
+- title: 'partidos'
+  desc: Query data on Brazilian political parties
+- contents:
+  - starts_with('partidos')
+- title: 'proposicoes'
+  desc: Query data on propositions presented at the Brazilian House of Representatives
+- contents:
+  - starts_with('proposicoes')
+- title: 'votacoes'
+  desc: Query data on voting processes at several bodies and commissions from the Brazilian House of Representatives
+- contents:
+  - starts_with('votacoes')
+- title: 'orgaos'
+  desc: Query data on  bodies and commissions from the Brazilian House of Representatives
+- contents:
+  - starts_with('orgaos')
+
+
+
+
+

@@ -9,7 +9,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "100%",
+  eval = FALSE
 )
 ```
 
@@ -53,7 +54,7 @@ deputados()
 ```
 
 To have more control over the results you can use further parameters from the API, such as 'idLegislatura' which matches a legislative period by its Id and return all representatives that were part of that specific legislative period.
-To access legislative periods ids you can use `legislaturas_id()`
+To access legislative periods ids you can use `legislaturas_id()`.
 
 ```{r}
 # Get the id for a legislative period active in '1900-01-01'
@@ -107,7 +108,7 @@ eventos_referencias()
 
 #### 'frentes'
 
-Use functions on this category for querying data on parliamentary fronts created after 2003 at the Brazilian House of representatives.
+Use functions on this category for querying data on parliamentary fronts created after 2003 at the Brazilian House of Representatives.
 
 The basic function for this category is `eventos()` and it can be used to query data on parliamentary fronts active in on or more legislative periods. For getting the id from a legislative period you can run `legislaturas_id()`.
 
@@ -129,7 +130,7 @@ frentes_membros(id = id)
 
 #### 'legislaturas'
 
-Use functions on this category for querying data on legislative periods for the Brazilian House of representatives.
+Use functions on this category for querying data on legislative periods for the Brazilian House of Representatives.
 
 The basic function for this category is `legislaturas()` which retunrs by default a complete list of legislative periods.
 ```{r}
@@ -149,7 +150,7 @@ legislaturas_mesa(id = id)
 
 Use functions on this category for querying data on Brazilian political parties.
 
-The basic function for this category is `partidos()` which by default return representatives in office for the currently legislative period.
+The basic function for this category is `partidos()` which by default return representatives in office and its political parties in the currently legislative period.
 
 ```{r}
 partidos()
@@ -202,7 +203,7 @@ votacoes()
 ```
 
 
-There are three more functions on this category for querying data on a specific voting processes:: `votacoes_info()`, `votacoes_orientacoes()`, `votacoes_votos()`. Each one receives a voting unique identifier.
+There are three more functions on this category for querying data on a specific voting processes: `votacoes_info()`, `votacoes_orientacoes()`, `votacoes_votos()`. Each one receives a voting unique identifier.
 
 ```{r}
 # Voting records at voting process "2265603-43" 
@@ -219,7 +220,7 @@ The basic function for this category is `orgaos()` which returns a list of bodie
 orgaos()
 ```
 
-There are three more functions on this category for querying data on a specific voting processes::  `orgaos_eventos()`, `orgaos_info()`, `orgaos_membros()`, `orgaos_votacoes()`. Each one receives a voting unique identifier.
+There are three more functions on this category for querying data on a specific voting processes: `orgaos_eventos()`, `orgaos_info()`, `orgaos_membros()`, `orgaos_votacoes()`. Each one receives a voting unique identifier.
 
 ```{r}
 # Get a body or commission unique identifier
