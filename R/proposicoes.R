@@ -75,7 +75,7 @@ proposicoes_id <- function(type, number, year) {
 #' @export
 #' @family proposicoes
 #' @examples
-#' a <- proposicoes_info(id = 15990)
+#' a <- proposicoes_info(id = 19175)
 proposicoes_info <- function(id) {
 
   assertthat::assert_that(!missing(id),msg = "'type' is missing")
@@ -120,7 +120,8 @@ proposicoes_info <- function(id) {
 #' @return A tibble with authors of a given proposition
 #' @export
 #' @family proposicoes
-#' @examples proposicoes_autores(id = 15990)
+#' @examples
+#' a <- proposicoes_autores(id = 19175)
 proposicoes_autores <- function(id) {
   assertthat::assert_that(!missing(id),msg = "'type' is missing")
   if (is.numeric(id)) {
@@ -191,7 +192,8 @@ proposicoes_relacionadas <- function(id) {
 #' @return A tibble of thematic areas related to a given proposition
 #' @export
 #' @family proposicoes
-#' @examples proposicoes_temas(id = 15990)
+#' @examples
+#' a <- proposicoes_temas(id = 15990)
 proposicoes_temas <- function(id) {
   assertthat::assert_that(!missing(id),msg = "'type' is missing")
   if (is.numeric(id)) {
@@ -224,7 +226,8 @@ proposicoes_temas <- function(id) {
 #' @return A tibble with the historical record of a proposition at the House of Representatives
 #' @export
 #' @family proposicoes
-#' @examples proposicoes_historico(id = 15990)
+#' @examples
+#' a <- proposicoes_historico(id = 19175)
 proposicoes_historico <- function(id){
   assertthat::assert_that(!missing(id),msg = "'type' is missing")
   if (is.numeric(id)) {

@@ -16,7 +16,7 @@ A tibble of thematic areas related to a given proposition
 Get a list of thematic areas for a given proposition, according to classification from the House of Representatives Center of Information and Documentation.
 }
 \examples{
-proposicoes_temas(id = 15990)
+a <- proposicoes_temas(id = 15990)
 }
 \seealso{
 Other proposicoes: 

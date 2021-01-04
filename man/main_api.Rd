@@ -7,7 +7,7 @@
 main_api(path, args = NULL)
 }
 \arguments{
-\item{path}{endpoint for api}
+\item{path}{endpoint for API}
 
 \item{args}{list of query arguments}
 }

@@ -17,7 +17,7 @@ Get a list of authors for a given proposition. Note: not only representatives ar
 By the House of Representatives regiment every signatory is considered author.
 }
 \examples{
-proposicoes_autores(id = 15990)
+a <- proposicoes_autores(id = 19175)
 }
 \seealso{
 Other proposicoes: 

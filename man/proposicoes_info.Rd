@@ -16,7 +16,7 @@ A tibble with information about a proposition
 Get detailed information about a proposition presented at the Brazilian House of representatives
 }
 \examples{
-a <- proposicoes_info(id = 15990)
+a <- proposicoes_info(id = 19175)
 }
 \seealso{
 Other proposicoes: 

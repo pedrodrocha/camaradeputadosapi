@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# `cameradeputadosapi`: A R wrapper for the Brazilian House of Representatives open data API
+# `cameradeputadosapi`: A R Wrapper for the Brazilian House of Representatives Open Data RESTful API
 
 <!-- badges: start -->
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)

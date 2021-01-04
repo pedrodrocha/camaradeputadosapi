@@ -16,7 +16,7 @@ A tibble with the historical record of a proposition at the House of Representat
 Get the historical record of a proposition at the House of Representatives since it was first presented.
 }
 \examples{
-proposicoes_historico(id = 15990)
+a <- proposicoes_historico(id = 19175)
 }
 \seealso{
 Other proposicoes: 
