@@ -225,7 +225,7 @@ eventos_pauta <- function(id) {
 #'
 #' @description
 #'
-#' Get basic information on votings that occured in an event. Note that votings only occur on deliberative events.
+#' Get basic information on votings that occurred in an event. Note that votings only occur on deliberative events.
 #' You can look for events running \code{\link{eventos}}.
 #' More information about voting processes can be obtained with \code{\link{votacoes_info}}.
 #'

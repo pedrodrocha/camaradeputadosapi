@@ -177,7 +177,7 @@ The basic function for this category is `proposicoes()` which by default return 
 proposicoes()
 ```
 
-There are six more functions on this cateogory for querying data on a specific proposition:  `proposicoes_autores()`, `proposicoes_historico()`, `proposicoes_info()`, `proposicoes_relacionadas()`, `proposicoes_temas()`, `proposicoes_votacoes()`. Each one receives a proposition unique identifier.
+There are six more functions on this category for querying data on a specific proposition:  `proposicoes_autores()`, `proposicoes_historico()`, `proposicoes_info()`, `proposicoes_relacionadas()`, `proposicoes_temas()`, `proposicoes_votacoes()`. Each one receives a proposition unique identifier.
 
 ```{r}
 # Get a proposition id

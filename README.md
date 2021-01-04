@@ -193,7 +193,7 @@ return a list of propositions active 30 days prior to the query.
 proposicoes()
 ```
 
-There are six more functions on this cateogory for querying data on a
+There are six more functions on this category for querying data on a
 specific proposition: `proposicoes_autores()`,
 `proposicoes_historico()`, `proposicoes_info()`,
 `proposicoes_relacionadas()`, `proposicoes_temas()`,

@@ -1,7 +1,7 @@
 
 #' Main GET function for Brazilian lower house API
 #'
-#' @param path endpoint for api
+#' @param path endpoint for API
 #' @param args list of query arguments
 #'
 #' @return list
