@@ -1,10 +1,10 @@
 Package: camaradeputadosapi
-Title: 'A R Wrapper for the Brazilian House of Representatives Open Data RESTful API'
+Title: ''a R Wrapper for the Brazilian House of Representatives Open Data 'RESTful' API''
 Version: 0.1.0
 Authors@R: person("Rocha","Pedro", email = "pedro.diniz.rocha@gmail.com", role = c("aut","cre"),comment = c(ORCID = "0000-0002-1365-3292"))
 Description: The goal of 'camaradeputadosapi' is to ease access and provide a 
     clean interface in R for querying the Brazilian House of Representatives 
-    open data RESTful API. 
+    open data 'RESTful' API. 
 License: MIT + file LICENSE
 URL: https://github.com/pedrodrocha/camaradeputadosapi, https://pedrodrocha.com/camaradeputadosapi/
 Encoding: UTF-8
